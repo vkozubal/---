@@ -15,13 +15,11 @@
 
 	<dependencies>
 		<dependency>
-			<!--should be used only in runtime -->
 			<groupId>org.pti</groupId>
 			<artifactId>poster-model</artifactId>
 			<version>${project.version}</version>
-			<scope>runtime</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.glassfish.jersey.ext</groupId>
 			<artifactId>jersey-spring3</artifactId>
@@ -31,6 +29,12 @@
 		<dependency>
 			<groupId>org.pti</groupId>
 			<artifactId>poster-views</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.pti</groupId>
+			<artifactId>poster-dao</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
@@ -46,11 +50,16 @@
 
 		<dependency>
 			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 		</dependency>
 
 	</dependencies>
-	
+
 	<build>
 		<finalName>poster-rest</finalName>
 	</build>

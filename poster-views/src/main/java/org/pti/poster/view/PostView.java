@@ -11,8 +11,8 @@ import org.pti.poster.model.Post;
 public class PostView {
 	private final Post post;
 
-	public PostView(String text) {
-		this.post = new Post(text);
+	public PostView(Post post) {
+		this.post = post;
 	}
 
 	@GET

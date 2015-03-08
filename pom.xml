@@ -7,7 +7,7 @@
 	<artifactId>poster</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<modules>
-	        <module>poster-model</module>
+		<module>poster-model</module>
 		<module>poster-dao</module>
 		<module>poster-rest</module>
 		<module>poster-views</module>
@@ -45,6 +45,12 @@
 						<artifactId>commons-logging</artifactId>
 					</exclusion>
 				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
 			</dependency>
 
 			<dependency>
