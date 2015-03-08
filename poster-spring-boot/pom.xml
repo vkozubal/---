@@ -62,7 +62,6 @@
                 </executions>
             </plugin>
         </plugins>
-        
         <finalName>poster-spring-boot</finalName>
     </build>
 </project>
