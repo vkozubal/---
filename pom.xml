@@ -1,71 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.pti</groupId>
-	<artifactId>poster</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<modules>
-		<module>poster-rest</module>
-		<module>poster-model</module>
-		<module>poster-views</module>
-		<module>poster-integration-tests</module>
-	</modules>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <groupId>org.pti</groupId>
+    <artifactId>poster</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>poster-rest</module>
+        <module>poster-model</module>
+        <module>poster-integration-tests</module>
+        <module>poster-dao</module>
+        <module>poster-service</module>
+        <module>poster-spring-boot</module>
+    </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <couchbase.version>3.0.0-beta2</couchbase.version>
+        <spring.version>4.1.4.RELEASE</spring.version>
+        <spring.boot.version>1.2.1.RELEASE</spring.boot.version>
+        <lombok.version>1.14.4</lombok.version>
+        <couchbase.version>3.0.0-beta2</couchbase.version>
+        <lombok.version>1.14.4</lombok.version>
+        <javaee-web-api-version>7.0</javaee-web-api-version>
+    </properties>
 
-		<jersey.version>2.15</jersey.version>
-		<couchbase.version>3.0.0-beta2</couchbase.version>
-		<lombok.version>1.14.4</lombok.version>
-		<javaee-web-api-version>7.0</javaee-web-api-version>
-	</properties>
+    <packaging>pom</packaging>
 
-	<packaging>pom</packaging>
+    <dependencyManagement>
+        <dependencies>
+            <!-- bill of material -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <type>pom</type>
+                <version>${spring.version}</version>
+                <scope>import</scope>
+            </dependency>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.glassfish.jersey</groupId>
-				<artifactId>jersey-bom</artifactId>
-				<version>${jersey.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-			<dependency>
-				<groupId>org.mongodb</groupId>
-				<artifactId>mongo-java-driver</artifactId>
-				<version>${couchbase.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>${couchbase.version}</version>
+            </dependency>
 
-			<!-- for integration module -->
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-web-api</artifactId>
-				<version>${javaee-web-api-version}</version>
-				<scope>provided</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+            <!-- for integration module -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>6.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

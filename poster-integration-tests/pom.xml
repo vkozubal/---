@@ -10,11 +10,6 @@
 
 	<artifactId>poster-integration-tests</artifactId>
 	<dependencies>
-		<dependency>
-			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
-			<artifactId>jersey-test-framework-provider-bundle</artifactId>
-			<type>pom</type>
-		</dependency>
 	</dependencies>
 	<name>poster-integration-tests</name>
 </project>

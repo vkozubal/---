@@ -1,41 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<parent>
-		<artifactId>poster</artifactId>
-		<groupId>org.pti</groupId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
-	<packaging>war</packaging>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>poster</artifactId>
+        <groupId>org.pti</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <packaging>war</packaging>
 
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>poster-rest</artifactId>
-	<name>poster-rest</name>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>poster-rest</artifactId>
+    <name>poster-rest</name>
 
 
-	<dependencies>
-		<dependency>
-			<!--should be used only in runtime -->
-			<groupId>org.pti</groupId>
-			<artifactId>poster-model</artifactId>
-			<version>${project.version}</version>
-			<scope>runtime</scope>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.pti</groupId>
+            <artifactId>poster-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.pti</groupId>
-			<artifactId>poster-views</artifactId>
-			<version>${project.version}</version>
-			<!--this dependency should not be used in the org.pti.rest module -->
-			<!--<exclusions> -->
-			<!--<exclusion> -->
-			<!--<groupId>com.kozubal</groupId> -->
-			<!--<artifactId>model</artifactId> -->
-			<!--</exclusion> -->
-			<!--</exclusions> -->
-		</dependency>
-	</dependencies>
-	<build>
-		<finalName>poster-rest</finalName>
-	</build>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.pti</groupId>
+            <artifactId>poster-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <build>
+        <finalName>poster-rest</finalName>
+    </build>
 </project>
