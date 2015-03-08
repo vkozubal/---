@@ -21,20 +21,36 @@
 			<version>${project.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.glassfish.jersey.ext</groupId>
+			<artifactId>jersey-spring3</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.pti</groupId>
 			<artifactId>poster-views</artifactId>
 			<version>${project.version}</version>
-			<!--this dependency should not be used in the org.pti.rest module -->
-			<!--<exclusions> -->
-			<!--<exclusion> -->
-			<!--<groupId>com.kozubal</groupId> -->
-			<!--<artifactId>model</artifactId> -->
-			<!--</exclusion> -->
-			<!--</exclusions> -->
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+
 	</dependencies>
+	
 	<build>
 		<finalName>poster-rest</finalName>
 	</build>

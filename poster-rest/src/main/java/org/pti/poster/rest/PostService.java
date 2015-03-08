@@ -6,7 +6,7 @@ import javax.ws.rs.PathParam;
 import org.pti.poster.view.PostView;
 
 @Path(value = "/post")
-public class ContactsService {
+public class PostService{
 
 	@Path("/get")
 	public PostView getPost(@PathParam("id") String id) {

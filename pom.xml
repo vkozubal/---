@@ -7,30 +7,84 @@
 	<artifactId>poster</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<modules>
+	        <module>poster-model</module>
+		<module>poster-dao</module>
 		<module>poster-rest</module>
-		<module>poster-model</module>
 		<module>poster-views</module>
 		<module>poster-integration-tests</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+		<spring.version>3.2.13.RELEASE</spring.version>
 		<jersey.version>2.15</jersey.version>
 		<couchbase.version>3.0.0-beta2</couchbase.version>
 		<lombok.version>1.14.4</lombok.version>
 		<javaee-web-api-version>7.0</javaee-web-api-version>
+		<maven.compilerplugin.version>3.2</maven.compilerplugin.version>
 	</properties>
 
 	<packaging>pom</packaging>
 
 	<dependencyManagement>
 		<dependencies>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.glassfish.jersey</groupId>
 				<artifactId>jersey-bom</artifactId>
 				<version>${jersey.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.glassfish.jersey.ext</groupId>
+				<artifactId>jersey-spring3</artifactId>
+				<version>${jersey.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-web</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.glassfish.jersey.media</groupId>
+				<artifactId>jersey-media-json-jackson</artifactId>
+				<version>${jersey.version}</version>
 			</dependency>
 
 			<dependency>
@@ -60,7 +114,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
+				<version>${maven.compilerplugin.version}</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
