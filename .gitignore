@@ -164,4 +164,13 @@ nb-configuration.xml
 *sublime-*
 
 
+#Angular gitignore
+
+logs/*
+!.gitkeep
+**/node_modules/
+**/bower_components/
+tmp
+.DS_Store
+.idea
 
