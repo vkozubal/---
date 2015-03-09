@@ -1,16 +1,18 @@
-package hello;
+package org.pti.poster.boot;
 
 
 import org.pti.poster.SpringApplicationConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
 import java.util.Arrays;
 
+@ComponentScan
 @SpringBootApplication
-@Import(value = SpringApplicationConfiguration.class)
+@Import(value = {SpringApplicationConfiguration.class})
 public class Application {
 
     public static void main(String[] args) {
@@ -24,5 +26,4 @@ public class Application {
             System.out.println(beanName);
         }
     }
-
 }

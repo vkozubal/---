@@ -19,11 +19,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <couchbase.version>3.0.0-beta2</couchbase.version>
         <spring.version>4.1.4.RELEASE</spring.version>
-        <spring.boot.version>1.2.1.RELEASE</spring.boot.version>
+        <spring.boot.version>1.2.0.RELEASE</spring.boot.version>
         <lombok.version>1.14.4</lombok.version>
         <couchbase.version>3.0.0-beta2</couchbase.version>
         <lombok.version>1.14.4</lombok.version>
         <javaee-web-api-version>7.0</javaee-web-api-version>
+        <maven.compilerplugin.version>3.2</maven.compilerplugin.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -37,6 +38,20 @@
                 <type>pom</type>
                 <version>${spring.version}</version>
                 <scope>import</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>2.16</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
 
             <dependency>
@@ -60,13 +75,13 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-web-api</artifactId>
@@ -74,14 +89,29 @@
                 <scope>provided</scope>
             </dependency>
         </dependencies>
+
     </dependencyManagement>
     
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-simple</artifactId>-->
+            <!--<version>1.7.10</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+            <!--<version>1.7.10</version>-->
+        <!--</dependency>-->
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                <version>${maven.compilerplugin.version}</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>

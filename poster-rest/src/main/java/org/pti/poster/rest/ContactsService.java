@@ -1,15 +1,23 @@
 package org.pti.poster.rest;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.pti.poster.PersonRespository;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@RestController
+import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+@Service
+@Path("/")
 public class ContactsService {
 
-    @RequestMapping("/")
+    @Inject
+    private PersonRespository personRespository;
+    
+    @GET
+    @Path("hello")
     public  String test(){
-        return "Up";
-
+        return personRespository.sayHello();
     }
-
 }
