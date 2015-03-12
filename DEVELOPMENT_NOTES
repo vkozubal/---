@@ -1,3 +1,0 @@
-1. Please always fix dependency versions in POMs, so you will avoid dependency conflicts during development
-2. Use dependencyManagement sections and BOMs, use managed versions in child POMs (please google about dependencyManagement)
-3. Use Unix/Linux-style line endings in git (# git config --global core.autocrlf true)
