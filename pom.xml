@@ -60,6 +60,12 @@
                 <version>0.9.5</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.google.collections</groupId>
+                <artifactId>google-collections</artifactId>
+                <version>1.0-rc5</version>
+            </dependency>
+
             <!-- for integration module -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -81,6 +87,13 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+    </dependencies>
     
     <build>
         <plugins>
