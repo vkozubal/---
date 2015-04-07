@@ -17,12 +17,16 @@ import java.util.Calendar;
 import java.util.Collection;
 
 @Api(value = "Post resource", position = 1)
-@RequestMapping("/api/posts")
+@RequestMapping("/rest/posts")
 @RestController
 public class PostResource {
     private final static String DATE_PATTERN = "yyyy-MM-dd";
 
     @Autowired
+    PostResource(PostService postService){
+        this.postService = postService;
+    }
+    
     PostService postService;
 
     @ApiOperation("Gets post by identifier")
@@ -35,7 +39,7 @@ public class PostResource {
 
     @ApiOperation(value = "Creates brand new resource", notes = "Use POST to create resources when you do not know the resource identifier. Returns the location of created resource.")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public void updatePost(@RequestBody PostView view, HttpServletResponse response) {
         response.setHeader(HttpHeaders.LOCATION, "/api/posts/" + String.valueOf(postService.addPost(PostView.fromView(view))));
     }
@@ -54,7 +58,7 @@ public class PostResource {
     }
 
     @ApiOperation(value = "Returns collection of posts")
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public Collection<Post> getPosts(@RequestParam(required = false) String filteredDate) throws ParseException {
         if (filteredDate == null) {
             return postService.getAllPosts();

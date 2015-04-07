@@ -1,11 +1,7 @@
 package org.pti.poster.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.google.common.collect.ImmutableList;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.apache.commons.lang.RandomStringUtils;
 
 import java.util.Calendar;
@@ -15,24 +11,35 @@ import java.util.Collections;
 @Getter
 public final class Post {
 
+    private final Version version;
+    private final Collection<Tag> postTags;
+    private final String text;
+    private final Calendar creationDate;
+    private Long id = Long.valueOf(RandomStringUtils.randomNumeric(7));
+
     public Post(String text, Collection<Tag> postTags) {
+        this(text, postTags, 0, null);
+    }
+
+    public Post(String text, Collection<Tag> postTags, Integer version, Long prevPostId) {
         creationDate = Calendar.getInstance();
         if (postTags == null) {
             postTags = Collections.emptyList();
         }
         this.postTags = ImmutableList.copyOf(postTags);
         this.text = text;
+        this.version = new Version( prevPostId, ++version);
     }
-
-    private final Collection<Tag> postTags;
-
-    private Long id = Long.valueOf(RandomStringUtils.randomNumeric(7));
-    private final String text;
-
-    private final Calendar creationDate;
 
     public Collection<Tag> getPostTags() {
         return ImmutableList.copyOf(postTags);
+    }
+
+    @Data
+    @AllArgsConstructor
+    private static class Version {
+        private Long previousVersionId;
+        private Integer versionNumber;
     }
 
     @NoArgsConstructor
@@ -40,7 +47,7 @@ public final class Post {
     @Data
     public static class Tag {
         private String text;
-       
+
         public Tag(String text) {
             this.text = text;
         }

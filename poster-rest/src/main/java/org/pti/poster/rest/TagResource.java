@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Api(value = "Tag resource", position = 1)
-@RequestMapping("/api/posts/{id}/tags")
+@RequestMapping("rest/posts/{id}/tags")
 @RestController
 public class TagResource {
 

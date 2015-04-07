@@ -2,6 +2,7 @@ package org.pti.poster.boot;
 
 
 import org.pti.poster.SpringApplicationConfiguration;
+import org.pti.poster.boot.security.WebSecurityConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +16,7 @@ import java.util.Arrays;
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan
-@Import(value = SpringApplicationConfiguration.class)
+@Import(value = {SpringApplicationConfiguration.class, WebSecurityConfiguration.class})
 public class Application extends WebMvcAutoConfiguration {
 
     public static void main(String[] args) {
