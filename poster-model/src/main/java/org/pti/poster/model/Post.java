@@ -3,7 +3,9 @@ package org.pti.poster.model;
 import com.google.common.collect.ImmutableList;
 import lombok.*;
 import org.apache.commons.lang.RandomStringUtils;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,7 +18,11 @@ public final class Post {
     private final String text;
     private final Calendar creationDate;
     private Long id = Long.valueOf(RandomStringUtils.randomNumeric(7));
-
+    
+    public Post(){
+        this(null, new ArrayList<Tag>());
+    }
+    
     public Post(String text, Collection<Tag> postTags) {
         this(text, postTags, 0, null);
     }
@@ -37,6 +43,7 @@ public final class Post {
 
     @Data
     @AllArgsConstructor
+    @NoArgsConstructor
     private static class Version {
         private Long previousVersionId;
         private Integer versionNumber;

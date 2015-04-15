@@ -23,10 +23,10 @@ public class PostResource {
     private final static String DATE_PATTERN = "yyyy-MM-dd";
 
     @Autowired
-    PostResource(PostService postService){
+    PostResource(PostService postService) {
         this.postService = postService;
     }
-    
+
     PostService postService;
 
     @ApiOperation("Gets post by identifier")
@@ -40,14 +40,14 @@ public class PostResource {
     @ApiOperation(value = "Creates brand new resource", notes = "Use POST to create resources when you do not know the resource identifier. Returns the location of created resource.")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public void updatePost(@RequestBody PostView view, HttpServletResponse response) {
+    public void createPost(@RequestBody PostView view, HttpServletResponse response) {
         response.setHeader(HttpHeaders.LOCATION, "/api/posts/" + String.valueOf(postService.addPost(PostView.fromView(view))));
     }
 
     @ApiOperation(value = "Makes partial update", notes = "You can use POST to send either all available values or just a subset of available values. Returns the location of updated resource.")
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public void updatePost(@RequestBody PostView view, @PathVariable Long id, HttpServletResponse response) {
+    public void makePartialUpdate(@RequestBody PostView view, @PathVariable Long id, HttpServletResponse response) {
         response.setHeader(HttpHeaders.LOCATION, String.valueOf(view.getId()));
     }
 

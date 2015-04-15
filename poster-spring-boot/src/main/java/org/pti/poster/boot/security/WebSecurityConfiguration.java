@@ -24,7 +24,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/swagger/**")
+                .antMatchers("/webjars/swagger-ui/**")
 //                .antMatchers("/app/api/rest/user/authenticate")  // hack to  make something work. TODO
                 .antMatchers("/api-docs/**"); // #3
     }
@@ -39,7 +39,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/app/api/rest/user/").hasRole(Constants.SECURITY.USER_ROLE.role)
                 .anyRequest().authenticated() // 7
                 .and()
-                .formLogin().loginPage("/login") // #9 todo
+                .formLogin()
                 .permitAll(); // #5
+        
+//                .and()
+//                .formLogin().loginPage("/login").permitAll()
+//                .and().httpBasic();
     }
 }

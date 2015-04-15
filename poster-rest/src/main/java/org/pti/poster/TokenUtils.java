@@ -12,6 +12,8 @@ public class TokenUtils {
     public static final String MAGIC_KEY = "obfuscate";
 
     public static String createToken(UserDetails userDetails) {
+        // Try  do use KeyBasedPersistenceTokenService from spring TODO
+        
         /* Expires in one hour */
         long expires = System.currentTimeMillis() + 1000L * 60 * 60;
 

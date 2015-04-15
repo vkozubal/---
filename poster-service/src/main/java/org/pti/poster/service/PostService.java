@@ -72,4 +72,16 @@ public class PostService {
         return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                 cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
     }
+
+    /**
+     * todo review this method
+     * return  adds a tag to post with id {@param postId}  
+     * @param postId id of {@link org.pti.poster.model.Post} to be updated
+     * @param tag {@link org.pti.poster.model.Post.Tag}
+     * @return id of updated created post
+     */
+    public Long addTag(Long postId, Post.Tag tag){
+        getById(postId).getPostTags().add(tag);
+        return postId;
+    }
 }

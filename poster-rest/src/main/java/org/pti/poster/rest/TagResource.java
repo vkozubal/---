@@ -14,30 +14,30 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Api(value = "Tag resource", position = 1)
-@RequestMapping("rest/posts/{id}/tags")
+@RequestMapping("/rest/posts/{id}/tags")
 @RestController
 public class TagResource {
 
     @Autowired
     PostService postService;
 
-    @ApiOperation(value = "Creates new tag")
+    @ApiOperation(value = "Adds new tag to existing post.")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public void updatePost(@RequestBody String tag, @PathVariable Long id, HttpServletResponse response){
+    public void updatePost(@RequestBody Post.Tag tag, @PathVariable Long id, HttpServletResponse response){
         Post initial = postService.getById(id);
         ArrayList<Post.Tag> tags = new ArrayList<>(initial.getPostTags());
-        tags.add(new Post.Tag(tag));
+        tags.add(tag);
         Post post = new Post(initial.getText(), tags);
         response.setHeader(HttpHeaders.LOCATION, "/api/posts/" + String.valueOf(postService.addPost(post)));
     }
     
     @ApiOperation(value = "Deletes tag from post")
     @RequestMapping(value = "/", method = RequestMethod.DELETE)
-    public void deletePost(@RequestBody String tag, @PathVariable Long id, HttpServletResponse response){
+    public void deletePost(@RequestBody Post.Tag tag, @PathVariable Long id, HttpServletResponse response){
         Post initial = postService.getById(id);
         ArrayList<Post.Tag> tags = new ArrayList<>(initial.getPostTags());
-        tags.remove(new Post.Tag(tag));
+        tags.remove(tag);
         Post post = new Post(initial.getText(), tags);
         response.setHeader(HttpHeaders.LOCATION, "/api/posts/" + String.valueOf(postService.addPost(post)));
     }

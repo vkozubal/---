@@ -1,6 +1,6 @@
 package org.pti.poster.view;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.pti.poster.model.Post;
@@ -8,13 +8,13 @@ import org.pti.poster.model.Post;
 import java.util.Collection;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class PostView {
 
     private String text;
-    @JsonIgnore
-    private Long id;
     private Collection<Post.Tag> tags;
+    private Long id;
 
     public static PostView fromPost(Post post) {
         PostView postView = new PostView();
