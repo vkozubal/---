@@ -29,6 +29,7 @@
         <hibernate-core.version>4.3.8.Final</hibernate-core.version>
         <commons-io.version>2.4</commons-io.version>
         <springloaded.version>1.2.1.RELEASE</springloaded.version>
+        <swagger.springmvc.version>0.9.5</swagger.springmvc.version>
     </properties>
 
     <dependencyManagement>
@@ -138,6 +139,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>springloaded</artifactId>
             <version>${springloaded.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mangofactory</groupId>
+            <artifactId>swagger-springmvc</artifactId>
+            <version>${swagger.springmvc.version}</version>
         </dependency>
 
     </dependencies>

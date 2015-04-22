@@ -13,10 +13,12 @@
     <name>poster-server-utils</name>
 
     <dependencies>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>
