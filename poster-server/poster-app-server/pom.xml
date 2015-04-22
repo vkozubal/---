@@ -21,6 +21,12 @@
 
         <dependency>
             <groupId>org.pti</groupId>
+            <artifactId>poster-server-utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.pti</groupId>
             <artifactId>poster-model</artifactId>
         </dependency>
 
