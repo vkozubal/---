@@ -1,8 +1,8 @@
-package org.pti.poster.config;
+package org.pti.poster.webutil.config;
 
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import org.pti.poster.filter.PostFilter;
+import org.pti.poster.webutil.filter.PostFilter;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

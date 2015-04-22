@@ -37,6 +37,11 @@
 
         <dependency>
             <groupId>org.pti</groupId>
+            <artifactId>poster-web-util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.pti</groupId>
             <artifactId>poster-service</artifactId>
         </dependency>
 

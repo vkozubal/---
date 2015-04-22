@@ -1,8 +1,8 @@
-package org.pti.poster.config;
+package org.pti.poster.webutil.config;
 
-import org.pti.poster.converter.PostCollectionConverter;
-import org.pti.poster.converter.RegisteredPostConverter;
-import org.pti.poster.converter.UnregisteredPostConverter;
+import org.pti.poster.webutil.converter.PostCollectionConverter;
+import org.pti.poster.webutil.converter.RegisteredPostConverter;
+import org.pti.poster.webutil.converter.UnregisteredPostConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan
-public class WebConfiguration extends WebMvcConfigurerAdapter {
+public class PosterWebResourceConfiguration extends WebMvcConfigurerAdapter {
 
 	@Autowired
 	JacksonFilterConfig filterConfig;

@@ -1,8 +1,8 @@
-package org.pti.poster.converter;
+package org.pti.poster.webutil.converter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.pti.poster.config.JacksonFilterConfig;
 import org.pti.poster.dto.post.UnregisteredPostDto;
+import org.pti.poster.webutil.config.JacksonFilterConfig;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;

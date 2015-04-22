@@ -1,4 +1,4 @@
-package org.pti.poster.config;
+package org.pti.poster.server.appserver.config;
 
 import com.mangofactory.swagger.configuration.JacksonSwaggerSupport;
 import org.springframework.context.annotation.Bean;
