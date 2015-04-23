@@ -10,7 +10,6 @@ public class AuthorizationController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
-
 		return "OK";
 	}
 

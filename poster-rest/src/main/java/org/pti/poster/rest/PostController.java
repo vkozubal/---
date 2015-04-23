@@ -7,6 +7,8 @@ import org.pti.poster.service.post.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Path;
+
 @RequestMapping("/api/post")
 @RestController
 public class PostController {
@@ -14,18 +16,18 @@ public class PostController {
 	@Autowired
 	PostService postService;
 
-	@RequestMapping(value = "/get", params = {"id"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/get/id/{id}", method = RequestMethod.GET)
 	public
 	@ResponseBody
-	GenericPostDto getPost(@RequestParam(value = "id") String id) {
+	GenericPostDto getPost(@PathVariable(value = "id") String id) {
 		return postService.findPostById(id);
 	}
 
-	@RequestMapping(value = "/get", params = {"last"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/get/last/{last}", method = RequestMethod.GET)
 	public
 	@ResponseBody
-	GenericPostCollectionDto getLastPosts(@RequestParam(value = "last") int number) {
-		return postService.getLastPosts(number);
+	GenericPostCollectionDto getLastPosts(@PathVariable("last") int last) {
+		return postService.getLastPosts(last);
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
