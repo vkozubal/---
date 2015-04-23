@@ -40,15 +40,15 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 	}
 
 	@Override
-	public void configure(AuthorizationServerSecurityConfigurer security)throws Exception {
+	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 		security.passwordEncoder(passwordEncoder);
 	}
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.authorizationCodeServices(authorizationCodeServices())
-				 .authenticationManager(auth).tokenStore(tokenStore())
-				 .approvalStoreDisabled();
+				.authenticationManager(auth).tokenStore(tokenStore())
+				.approvalStoreDisabled();
 	}
 
 	@Override

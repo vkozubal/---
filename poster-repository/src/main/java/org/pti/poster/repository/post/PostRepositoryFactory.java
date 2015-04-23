@@ -9,8 +9,8 @@ public class PostRepositoryFactory {
 	@Autowired
 	private InMemoryPostRepository inMemoryRepo;
 
-	public PostRepository getRepositoryOfType(PostRepositoryType type){
-		if(PostRepositoryType.INMEMORY.equals(type)){
+	public PostRepository getRepositoryOfType(PostRepositoryType type) {
+		if (PostRepositoryType.INMEMORY.equals(type)) {
 			return inMemoryRepo;
 		}
 		return null;

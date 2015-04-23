@@ -12,7 +12,7 @@ public class JacksonFilterConfig {
 	FilterProvider filters;
 
 	@PostConstruct
-	public void init(){
+	public void init() {
 		PostFilter postFilter = new PostFilter();
 		filters = new SimpleFilterProvider().addFilter("postFilter", postFilter);
 	}

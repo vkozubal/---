@@ -12,7 +12,7 @@
     <artifactId>poster-gui</artifactId>
     <name>poster-gui</name>
     <packaging>pom</packaging>
-    
+
     <modules>
         <module>poster-client-browser</module>
     </modules>

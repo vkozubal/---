@@ -7,8 +7,6 @@ import org.pti.poster.service.post.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.Path;
-
 @RequestMapping("/api/post")
 @RestController
 public class PostController {

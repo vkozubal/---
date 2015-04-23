@@ -11,7 +11,7 @@
         <module>poster-model</module>
         <module>poster-dto</module>
         <module>poster-repository</module>
-	<module>poster-web-util</module>
+        <module>poster-web-util</module>
         <module>poster-service</module>
         <module>poster-rest</module>
         <module>poster-gui</module>

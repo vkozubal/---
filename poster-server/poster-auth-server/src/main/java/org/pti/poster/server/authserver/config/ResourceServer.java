@@ -23,7 +23,7 @@ public class ResourceServer extends ResourceServerConfigurerAdapter {
 
 	@Bean
 	public TokenStore tokenStore() {
-		tokenStoreJDBC= new JdbcTokenStore(dataSource);
+		tokenStoreJDBC = new JdbcTokenStore(dataSource);
 
 		return tokenStoreJDBC;
 	}
