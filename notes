@@ -1,3 +1,6 @@
+-javaagent:/root/.m2/repository/org/springframework/springloaded/1.2.1.RELEASE/springloaded-1.2.1.RELEASE.jar -noverify
+
+
 curl -X POST curl:password@localhost:21056/oauth/token\?grant_type=client_credentials
 http://localhost:21056/oauth/authorize?client_id=web&response_type=token&password=password
 SELECT name FROM sqlite_master WHERE type='table';
