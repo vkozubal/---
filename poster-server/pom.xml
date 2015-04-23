@@ -54,6 +54,12 @@
 
             <dependency>
                 <groupId>org.pti</groupId>
+                <artifactId>poster-web-util</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.pti</groupId>
                 <artifactId>poster-rest</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -150,7 +156,6 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
             <plugins>
 
                 <plugin>
@@ -178,6 +183,5 @@
                 </plugin>
 
             </plugins>
-        </pluginManagement>
     </build>
 </project>

@@ -29,7 +29,7 @@ import java.util.Arrays;
 @ComponentScan
 @Import(value = PosterAppServerApplicationConfiguration.class)
 
-public class Application {
+public class AppServer {
 
 	@Value("${oauth.resource:http://localhost:8080}")
 	private String baseUrl;
@@ -44,7 +44,7 @@ public class Application {
 	private DataSource dataSource;
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(Application.class, args);
+		ApplicationContext ctx = SpringApplication.run(AppServer.class, args);
 	}
 
 	@Bean

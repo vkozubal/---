@@ -17,13 +17,13 @@ import java.io.InputStreamReader;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class Application {
+public class AuthServer {
 
 	@Autowired
 	private DataSource dataSource;
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(Application.class, args);
+		ApplicationContext ctx = SpringApplication.run(AuthServer.class, args);
 	}
 
 	@PostConstruct
