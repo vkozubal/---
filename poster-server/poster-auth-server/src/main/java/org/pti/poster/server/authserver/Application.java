@@ -22,6 +22,10 @@ public class Application {
 	@Autowired
 	private DataSource dataSource;
 
+	public static void main(String[] args) {
+		ApplicationContext ctx = SpringApplication.run(Application.class, args);
+	}
+
 	@PostConstruct
 	public void setUpTokenDatasource() {
 		Resource resource = new ClassPathResource("db_schema");
@@ -32,9 +36,5 @@ public class Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(Application.class, args);
 	}
 }
