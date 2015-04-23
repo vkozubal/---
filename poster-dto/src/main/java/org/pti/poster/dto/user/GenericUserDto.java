@@ -24,7 +24,7 @@ public abstract class GenericUserDto extends AbstractUser {
 
 	@JsonIgnore
 	@Override
-	public String getUserId(){
+	public String getUserId() {
 		return userId;
 	}
 
