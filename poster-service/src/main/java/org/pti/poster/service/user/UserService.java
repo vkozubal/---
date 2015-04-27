@@ -3,6 +3,7 @@ package org.pti.poster.service.user;
 import org.pti.poster.assembler.GenericUserAssembler;
 import org.pti.poster.dto.user.GenericUserDto;
 import org.pti.poster.model.user.GenericUser;
+import org.pti.poster.model.user.GenericUserType;
 import org.pti.poster.repository.user.UserRepository;
 import org.pti.poster.repository.user.UserRepositoryFactory;
 import org.pti.poster.repository.user.UserRepositoryType;
@@ -30,6 +31,7 @@ public class UserService {
 
 	public GenericUserDto createUser(GenericUserDto userDto) {
 		GenericUser user = GenericUserAssembler.fromDto(userDto);
+		user.setType(GenericUserType.REGISTERED_USER);
 		GenericUser queryResult = userRepository.saveUser(user);
 		return GenericUserAssembler.toDto(queryResult);
 	}

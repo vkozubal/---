@@ -12,12 +12,6 @@ public abstract class GenericUserDto extends AbstractUser {
 		return type;
 	}
 
-	@JsonIgnore
-	@Override
-	public String getUserId() {
-		return userId;
-	}
-
 	@Override
 	public String toString() {
 		return "#" + userId + ": " + userNickName;
