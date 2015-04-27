@@ -10,10 +10,6 @@ public class UnregisteredPostDto extends GenericPostDto {
 		super(GenericPostType.UNREGISTERED_POST, "", "", userId, text);
 	}
 
-	public UnregisteredPostDto(GenericPostType type, String id, String date, String userId, String text) {
-		super(type, id, date, userId, text);
-	}
-
 	@JsonIgnore
 	@Override
 	public String getId() {

@@ -1,9 +1,11 @@
 package org.pti.poster.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.pti.poster.model.user.GenericUserType;
 
-@Data
+@Getter
+@Setter
 public abstract class AbstractUser {
 
 	protected GenericUserType type;
@@ -21,4 +23,22 @@ public abstract class AbstractUser {
 		this.userName = userName;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		AbstractUser that = (AbstractUser) o;
+
+		if (!userId.equals(that.userId)) return false;
+		return userNickName.equals(that.userNickName);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = userId.hashCode();
+		result = 31 * result + userNickName.hashCode();
+		return result;
+	}
 }

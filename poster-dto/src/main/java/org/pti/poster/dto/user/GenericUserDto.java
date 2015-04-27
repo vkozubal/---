@@ -2,13 +2,9 @@ package org.pti.poster.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.pti.poster.model.AbstractUser;
 import org.pti.poster.model.user.GenericUserType;
 
-@EqualsAndHashCode(callSuper = false)
-@Data
 @JsonFilter("postFilter")
 public abstract class GenericUserDto extends AbstractUser {
 

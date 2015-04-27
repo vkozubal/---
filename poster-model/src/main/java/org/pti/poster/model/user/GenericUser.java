@@ -7,4 +7,6 @@ public class GenericUser extends AbstractUser {
 	public GenericUser(GenericUserType type, String userId, String userNickName, String userName) {
 		super(type, userId, userNickName, userName);
 	}
+
+
 }
