@@ -50,4 +50,9 @@ public abstract class AbstractPost {
 		result = 31 * result + userId.hashCode();
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "#" + id + " | " + userId + " | " + text;
+	}
 }

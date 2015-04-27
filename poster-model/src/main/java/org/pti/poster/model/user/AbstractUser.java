@@ -43,4 +43,9 @@ public abstract class AbstractUser {
 		result = 31 * result + userNickName.hashCode();
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "#" + userId + " | " + userNickName;
+	}
 }

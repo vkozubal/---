@@ -12,9 +12,4 @@ public abstract class GenericUserDto extends AbstractUser {
 		return type;
 	}
 
-	@Override
-	public String toString() {
-		return "#" + userId + ": " + userNickName;
-	}
-
 }

@@ -23,9 +23,4 @@ public abstract class GenericPostDto extends AbstractPost {
 		return type;
 	}
 
-	@Override
-	public String toString() {
-		return "#" + id + ": " + text;
-	}
-
 }
