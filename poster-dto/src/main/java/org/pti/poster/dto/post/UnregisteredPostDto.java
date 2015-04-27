@@ -3,11 +3,12 @@ package org.pti.poster.dto.post;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.pti.poster.model.post.GenericPostType;
 
-
 public class UnregisteredPostDto extends GenericPostDto {
 
-	public UnregisteredPostDto(String userId, String text) {
-		super(GenericPostType.UNREGISTERED_POST, "", "", userId, text);
+	public UnregisteredPostDto() {
+		type = GenericPostType.UNREGISTERED_POST;
+		date = "";
+		id = "";
 	}
 
 	@JsonIgnore

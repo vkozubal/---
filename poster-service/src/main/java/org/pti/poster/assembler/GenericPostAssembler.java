@@ -7,19 +7,26 @@ import org.pti.poster.model.AbstractPost;
 import org.pti.poster.model.post.GenericPost;
 
 import javax.inject.Singleton;
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
-public class GenericPostAssembler {
+public class GenericPostAssembler extends AbstractAssembler {
 
 	public static GenericPost fromDto(GenericPostDto postDto) {
 		return convertFromDto(postDto);
 	}
 
 	public static GenericPostDto toDto(GenericPost post) {
-		return convertToDto(post);
+		GenericPostDto result = null;
+
+		try {
+			result = convertToDto(post);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 
 	public static List<GenericPostDto> toDto(List<GenericPost> posts) {
@@ -32,7 +39,7 @@ public class GenericPostAssembler {
 		return result;
 	}
 
-	private static GenericPostDto convertToDto(AbstractPost post) {
+	private static GenericPostDto convertToDto(AbstractPost post) throws Exception {
 		String className;
 
 		switch (post.getType()) {
@@ -47,69 +54,26 @@ public class GenericPostAssembler {
 				break;
 		}
 
-		return convertToDto(className, post);
-	}
-
-	private static GenericPostDto convertToDto(String className, AbstractPost post) {
-		GenericPostDto postDto = null;
-
-		if (!className.isEmpty()) {
-			Class<?> clazz;
-			try {
-				clazz = Class.forName(className);
-				Constructor<?> ctor = clazz.getConstructor(getConstructorArgumentClasses(post));
-				postDto = (GenericPostDto) ctor.newInstance(getConstructorArguments(post));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
+		GenericPostDto postDto = (GenericPostDto) getNewInstanceFor(className);
+		copyFieldsFromTo(post, postDto);
 
 		return postDto;
 	}
 
 	private static GenericPost convertFromDto(GenericPostDto postDto) {
-		GenericPost post = null;
-		String className = GenericPost.class.getName();
-
-		if (!className.isEmpty()) {
-			Class<?> clazz;
-			try {
-				clazz = Class.forName(className);
-				Class[] constructorArgumentClasses = getConstructorArgumentClasses(postDto);
-				Constructor<?> ctor = clazz.getConstructor(constructorArgumentClasses);
-				post = (GenericPost) ctor.newInstance(getConstructorArguments(postDto));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		GenericPost post = new GenericPost();
+		copyFieldsFromTo(postDto, post);
 
 		return post;
 	}
 
 
-	private static Object[] getConstructorArguments(AbstractPost post) {
-		List<Object> args = new ArrayList<>();
-
-		args.add(post.getType());
-		args.add(post.getId());
-		args.add(post.getDate());
-		args.add(post.getUserId());
-		args.add(post.getText());
-
-		return args.toArray();
-	}
-
-	private static Class[] getConstructorArgumentClasses(AbstractPost post) {
-		List<Class> args = new ArrayList<>();
-
-		args.add(post.getType().getClass());
-		args.add(post.getId().getClass());
-		args.add(post.getDate().getClass());
-		args.add(post.getUserId().getClass());
-		args.add(post.getText().getClass());
-
-		return args.toArray(new Class[args.size()]);
+	private static void copyFieldsFromTo(AbstractPost from, AbstractPost to) {
+		to.setType(from.getType());
+		to.setUserId(from.getUserId());
+		to.setId(from.getId());
+		to.setText(from.getText());
+		to.setType(from.getType());
 	}
 
 }

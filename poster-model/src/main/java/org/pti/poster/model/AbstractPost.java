@@ -20,6 +20,9 @@ public abstract class AbstractPost {
 
 	protected String userId;
 
+	public AbstractPost() {
+	}
+
 	public AbstractPost(GenericPostType type, String id, String date, String userId, String text) {
 		this.type = type;
 		this.id = id;

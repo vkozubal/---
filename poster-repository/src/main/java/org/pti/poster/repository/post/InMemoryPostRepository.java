@@ -5,7 +5,6 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.pti.poster.model.AbstractPost;
 import org.pti.poster.model.post.GenericPost;
-import org.pti.poster.model.post.GenericPostType;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -45,12 +44,16 @@ public class InMemoryPostRepository implements PostRepository {
 
 	@Override
 	public GenericPost savePost(GenericPost post) {
+		GenericPost savedPost = new GenericPost();
 		String id = UUID.randomUUID().toString();
 		String date = getCurrentDateAsString();
 
-		GenericPost savedPost = new GenericPost(GenericPostType.REGISTERED_POST, id, date, post.getUserId(), post.getText());
-		allPosts.put(id, savedPost);
+		savedPost.setId(id);
+		savedPost.setText(post.getText());
+		savedPost.setUserId(post.getUserId());
+		savedPost.setDate(date);
 
+		allPosts.put(id, savedPost);
 		return savedPost;
 	}
 

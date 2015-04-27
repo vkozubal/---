@@ -8,10 +8,6 @@ import org.pti.poster.model.post.GenericPostType;
 @JsonFilter("postFilter")
 public abstract class GenericPostDto extends AbstractPost {
 
-	public GenericPostDto(GenericPostType type, String id, String date, String userId, String text) {
-		super(type, id, date, userId, text);
-	}
-
 	@JsonIgnore
 	@Override
 	public GenericPostType getType() {

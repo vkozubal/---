@@ -7,12 +7,9 @@ import org.pti.poster.model.AbstractUser;
 import org.pti.poster.model.user.GenericUser;
 
 import javax.inject.Singleton;
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
-import java.util.List;
 
 @Singleton
-public class GenericUserAssembler {
+public class GenericUserAssembler extends AbstractAssembler {
 
 	public static GenericUser fromDto(GenericUserDto userDto) {
 		return convertFromDto(userDto);
@@ -63,30 +60,6 @@ public class GenericUserAssembler {
 		to.setUserId(from.getUserId());
 		to.setUserName(from.getUserName());
 		to.setUserNickName(from.getUserNickName());
-	}
-
-	private static Object getNewInstanceFor(String className) throws Exception {
-		Object result;
-		Class<?> clazz;
-
-		clazz = Class.forName(className);
-		Constructor<?> ctor = clazz.getConstructor(getConstructorArgumentClasses());
-		result = ctor.newInstance(getConstructorArguments());
-
-		return result;
-	}
-
-
-	private static Object[] getConstructorArguments() {
-		List<Object> args = new ArrayList<>();
-
-		return args.toArray();
-	}
-
-	private static Class[] getConstructorArgumentClasses() {
-		List<Class> args = new ArrayList<>();
-
-		return args.toArray(new Class[args.size()]);
 	}
 
 }
