@@ -44,6 +44,9 @@ public class GenericUserAssembler extends AbstractAssembler {
 			case UNREGISTERED_USER:
 				className = UnregisteredUserDto.class.getName();
 				break;
+			case NEW_USER:
+				className = UnregisteredUserDto.class.getName();
+				break;
 			default:
 				className = "";
 				break;

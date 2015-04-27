@@ -1,6 +1,7 @@
 package org.pti.poster.rest;
 
 import org.pti.poster.dto.user.GenericUserDto;
+import org.pti.poster.dto.user.NewUserDto;
 import org.pti.poster.dto.user.UnregisteredUserDto;
 import org.pti.poster.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class AuthorizationController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public
 	@ResponseBody
-	GenericUserDto register(@RequestBody UnregisteredUserDto user) {
+	GenericUserDto register(@RequestBody NewUserDto user) {
 		return userService.createUser(user);
 	}
 

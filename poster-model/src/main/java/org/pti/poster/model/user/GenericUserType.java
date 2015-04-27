@@ -2,7 +2,7 @@ package org.pti.poster.model.user;
 
 
 public enum GenericUserType {
-	REGISTERED_USER, UNREGISTERED_USER;
+	NEW_USER, REGISTERED_USER, UNREGISTERED_USER;
 
 	private String userName;
 
