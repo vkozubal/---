@@ -15,14 +15,10 @@ public class GenericUserAssembler extends AbstractAssembler {
 		return convertFromDto(userDto);
 	}
 
-	public static GenericUserDto toDto(GenericUser user) {
+	public static GenericUserDto toDto(GenericUser user) throws Exception {
 		GenericUserDto result = null;
 
-		try {
-			result = convertToDto(user);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		result = convertToDto(user);
 
 		return result;
 	}
@@ -36,6 +32,10 @@ public class GenericUserAssembler extends AbstractAssembler {
 
 	private static GenericUserDto convertToDto(GenericUser user) throws Exception {
 		String className;
+
+		if (user == null) {
+			return null;
+		}
 
 		switch (user.getType()) {
 			case REGISTERED_USER:

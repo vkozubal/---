@@ -3,6 +3,7 @@ package org.pti.poster.service.post;
 import org.pti.poster.assembler.GenericPostAssembler;
 import org.pti.poster.dto.post.GenericPostCollectionDto;
 import org.pti.poster.dto.post.GenericPostDto;
+import org.pti.poster.dto.post.UnregisteredPostDto;
 import org.pti.poster.model.post.GenericPost;
 import org.pti.poster.model.post.GenericPostType;
 import org.pti.poster.repository.post.PostRepository;
@@ -42,15 +43,18 @@ public class PostService {
 		return new GenericPostCollectionDto(queryResultDto);
 	}
 
-	public GenericPostDto savePost(GenericPostDto unsavedPostDto) {
-		GenericPost post = GenericPostAssembler.fromDto(unsavedPostDto);
+	public GenericPostDto savePost(GenericPostDto newPostDto) {
+		GenericPost newPost = GenericPostAssembler.fromDto(newPostDto);
 
-		if (isPostCanBeSaved(post)) {
-			setPostRegistered(post);
-			GenericPost queryResult = postRepository.savePost(post);
-			return GenericPostAssembler.toDto(queryResult);
+		if (isPostCanBeSaved(newPost)) {
+			setPostRegistered(newPost);
+			GenericPost registeredPost = postRepository.savePost(newPost);
+			return GenericPostAssembler.toDto(registeredPost);
 		} else {
-			return unsavedPostDto;
+			UnregisteredPostDto unregistredPost = new UnregisteredPostDto();
+			GenericPostAssembler.copyFieldsFromTo(newPostDto, unregistredPost);
+			unregistredPost.getErrorMessages().add("Post cannot be saved");
+			return unregistredPost;
 		}
 	}
 

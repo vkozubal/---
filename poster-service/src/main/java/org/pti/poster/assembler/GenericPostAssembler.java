@@ -1,6 +1,7 @@
 package org.pti.poster.assembler;
 
 import org.pti.poster.dto.post.GenericPostDto;
+import org.pti.poster.dto.post.NewPostDto;
 import org.pti.poster.dto.post.RegisteredPostDto;
 import org.pti.poster.dto.post.UnregisteredPostDto;
 import org.pti.poster.model.post.AbstractPost;
@@ -51,6 +52,9 @@ public class GenericPostAssembler extends AbstractAssembler {
 		String className;
 
 		switch (post.getType()) {
+			case NEW_POST:
+				className = NewPostDto.class.getName();
+				break;
 			case UNREGISTERED_POST:
 				className = UnregisteredPostDto.class.getName();
 				break;

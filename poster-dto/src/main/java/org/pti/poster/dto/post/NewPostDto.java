@@ -1,15 +1,14 @@
 package org.pti.poster.dto.post;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import org.pti.poster.model.post.GenericPostType;
 
 import java.util.List;
 
-public class UnregisteredPostDto extends GenericPostDto {
+public class NewPostDto extends GenericPostDto {
 
-	public UnregisteredPostDto() {
-		type = GenericPostType.UNREGISTERED_POST;
+	public NewPostDto() {
+		type = GenericPostType.NEW_POST;
 		date = "";
 		id = "";
 	}
@@ -26,10 +25,9 @@ public class UnregisteredPostDto extends GenericPostDto {
 		return super.getDate();
 	}
 
-	@JsonInclude
+	@JsonIgnore
 	@Override
 	public List<String> getErrorMessages() {
 		return super.getErrorMessages();
 	}
-
 }

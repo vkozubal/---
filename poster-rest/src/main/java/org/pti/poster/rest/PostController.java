@@ -2,7 +2,7 @@ package org.pti.poster.rest;
 
 import org.pti.poster.dto.post.GenericPostCollectionDto;
 import org.pti.poster.dto.post.GenericPostDto;
-import org.pti.poster.dto.post.UnregisteredPostDto;
+import org.pti.poster.dto.post.NewPostDto;
 import org.pti.poster.service.post.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +31,7 @@ public class PostController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public
 	@ResponseBody
-	GenericPostDto save(@RequestBody UnregisteredPostDto post) {
+	GenericPostDto save(@RequestBody NewPostDto post) {
 		return postService.savePost(post);
 	}
 

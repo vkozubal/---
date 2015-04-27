@@ -2,7 +2,7 @@ package org.pti.poster.model.post;
 
 
 public enum GenericPostType {
-	UNREGISTERED_POST, REGISTERED_POST;
+	NEW_POST, UNREGISTERED_POST, REGISTERED_POST;
 
 	private String typeName;
 

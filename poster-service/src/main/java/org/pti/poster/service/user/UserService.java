@@ -26,13 +26,29 @@ public class UserService {
 
 	public GenericUserDto findUserById(String id) {
 		GenericUser queryResult = userRepository.getUserById(id);
-		return GenericUserAssembler.toDto(queryResult);
+		GenericUserDto queryResultDto = null;
+
+		try {
+			queryResultDto = GenericUserAssembler.toDto(queryResult);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return queryResultDto;
 	}
 
 	public GenericUserDto createUser(GenericUserDto userDto) {
 		GenericUser user = GenericUserAssembler.fromDto(userDto);
 		user.setType(GenericUserType.REGISTERED_USER);
 		GenericUser queryResult = userRepository.saveUser(user);
-		return GenericUserAssembler.toDto(queryResult);
+		GenericUserDto queryResultDto = null;
+
+		try {
+			queryResultDto = GenericUserAssembler.toDto(queryResult);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return queryResultDto;
 	}
 }
