@@ -4,7 +4,7 @@ import org.pti.poster.model.post.GenericPostType;
 
 public class RegisteredPostDto extends GenericPostDto {
 
-	public RegisteredPostDto(GenericPostType type, String id, String date, String userId, String text) {
-		super(type, id, date, userId, text);
+	public RegisteredPostDto(String id, String date, String userId, String text) {
+		super(GenericPostType.REGISTERED_POST, id, date, userId, text);
 	}
 }

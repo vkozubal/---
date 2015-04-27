@@ -1,16 +1,28 @@
 package org.pti.poster.rest;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.pti.poster.dto.user.GenericUserDto;
+import org.pti.poster.dto.user.UnregisteredUserDto;
+import org.pti.poster.service.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/auth")
 @RestController
 public class AuthorizationController {
 
+	@Autowired
+	UserService userService;
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "OK";
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public
+	@ResponseBody
+	GenericUserDto register(@RequestBody UnregisteredUserDto user) {
+		return userService.createUser(user);
 	}
 
 }

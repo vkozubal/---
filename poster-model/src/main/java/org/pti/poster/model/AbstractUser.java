@@ -16,6 +16,9 @@ public abstract class AbstractUser {
 
 	protected String userName;
 
+	public AbstractUser() {
+	}
+
 	public AbstractUser(GenericUserType type, String userId, String userNickName, String userName) {
 		this.type = type;
 		this.userId = userId;
