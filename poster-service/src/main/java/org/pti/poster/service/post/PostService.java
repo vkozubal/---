@@ -4,6 +4,7 @@ import org.pti.poster.assembler.GenericPostAssembler;
 import org.pti.poster.dto.post.GenericPostCollectionDto;
 import org.pti.poster.dto.post.GenericPostDto;
 import org.pti.poster.model.post.GenericPost;
+import org.pti.poster.model.post.GenericPostType;
 import org.pti.poster.repository.post.PostRepository;
 import org.pti.poster.repository.post.PostRepositoryFactory;
 import org.pti.poster.repository.post.PostRepositoryType;
@@ -39,6 +40,7 @@ public class PostService {
 
 	public GenericPostDto savePost(GenericPostDto postDto) {
 		GenericPost post = GenericPostAssembler.fromDto(postDto);
+		post.setType(GenericPostType.REGISTERED_POST);
 		GenericPost queryResult = postRepository.savePost(post);
 		return GenericPostAssembler.toDto(queryResult);
 	}

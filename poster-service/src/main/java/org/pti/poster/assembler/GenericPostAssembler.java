@@ -39,6 +39,14 @@ public class GenericPostAssembler extends AbstractAssembler {
 		return result;
 	}
 
+	public static void copyFieldsFromTo(AbstractPost from, AbstractPost to) {
+		to.setType(from.getType());
+		to.setUserId(from.getUserId());
+		to.setId(from.getId());
+		to.setText(from.getText());
+		to.setDate(from.getDate());
+	}
+
 	private static GenericPostDto convertToDto(AbstractPost post) throws Exception {
 		String className;
 
@@ -65,15 +73,6 @@ public class GenericPostAssembler extends AbstractAssembler {
 		copyFieldsFromTo(postDto, post);
 
 		return post;
-	}
-
-
-	private static void copyFieldsFromTo(AbstractPost from, AbstractPost to) {
-		to.setType(from.getType());
-		to.setUserId(from.getUserId());
-		to.setId(from.getId());
-		to.setText(from.getText());
-		to.setType(from.getType());
 	}
 
 }

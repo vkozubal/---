@@ -1,11 +1,9 @@
 package org.pti.poster.dto.post;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.pti.poster.model.AbstractPost;
 import org.pti.poster.model.post.GenericPostType;
 
-@JsonFilter("postFilter")
 public abstract class GenericPostDto extends AbstractPost {
 
 	@JsonIgnore

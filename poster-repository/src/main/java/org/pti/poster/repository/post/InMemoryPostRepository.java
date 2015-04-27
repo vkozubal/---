@@ -48,6 +48,7 @@ public class InMemoryPostRepository implements PostRepository {
 		String id = UUID.randomUUID().toString();
 		String date = getCurrentDateAsString();
 
+		savedPost.setType(post.getType());
 		savedPost.setId(id);
 		savedPost.setText(post.getText());
 		savedPost.setUserId(post.getUserId());

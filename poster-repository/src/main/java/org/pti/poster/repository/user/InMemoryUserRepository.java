@@ -29,6 +29,7 @@ public class InMemoryUserRepository implements UserRepository {
 		GenericUser savedUser = new GenericUser();
 		String id = UUID.randomUUID().toString();
 
+
 		savedUser.setType(user.getType());
 		savedUser.setUserId(id);
 		savedUser.setUserNickName(user.getUserNickName());

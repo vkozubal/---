@@ -27,6 +27,13 @@ public class GenericUserAssembler extends AbstractAssembler {
 		return result;
 	}
 
+	public static void copyFieldsFromTo(AbstractUser from, AbstractUser to) {
+		to.setType(from.getType());
+		to.setUserId(from.getUserId());
+		to.setUserName(from.getUserName());
+		to.setUserNickName(from.getUserNickName());
+	}
+
 	private static GenericUserDto convertToDto(GenericUser user) throws Exception {
 		String className;
 
@@ -53,13 +60,6 @@ public class GenericUserAssembler extends AbstractAssembler {
 		copyFieldsFromTo(userDto, user);
 
 		return user;
-	}
-
-	private static void copyFieldsFromTo(AbstractUser from, AbstractUser to) {
-		to.setType(from.getType());
-		to.setUserId(from.getUserId());
-		to.setUserName(from.getUserName());
-		to.setUserNickName(from.getUserNickName());
 	}
 
 }
