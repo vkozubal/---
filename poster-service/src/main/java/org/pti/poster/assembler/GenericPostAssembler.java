@@ -3,7 +3,7 @@ package org.pti.poster.assembler;
 import org.pti.poster.dto.post.GenericPostDto;
 import org.pti.poster.dto.post.RegisteredPostDto;
 import org.pti.poster.dto.post.UnregisteredPostDto;
-import org.pti.poster.model.AbstractPost;
+import org.pti.poster.model.post.AbstractPost;
 import org.pti.poster.model.post.GenericPost;
 
 import javax.inject.Singleton;

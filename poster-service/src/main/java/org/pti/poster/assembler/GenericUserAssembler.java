@@ -3,7 +3,7 @@ package org.pti.poster.assembler;
 import org.pti.poster.dto.user.GenericUserDto;
 import org.pti.poster.dto.user.RegisteredUserDto;
 import org.pti.poster.dto.user.UnregisteredUserDto;
-import org.pti.poster.model.AbstractUser;
+import org.pti.poster.model.user.AbstractUser;
 import org.pti.poster.model.user.GenericUser;
 
 import javax.inject.Singleton;

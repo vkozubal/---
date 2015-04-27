@@ -1,8 +1,7 @@
-package org.pti.poster.model;
+package org.pti.poster.model.user;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.pti.poster.model.user.GenericUserType;
 
 @Getter
 @Setter

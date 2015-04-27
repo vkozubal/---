@@ -3,7 +3,7 @@ package org.pti.poster.repository.post;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.pti.poster.model.AbstractPost;
+import org.pti.poster.model.post.AbstractPost;
 import org.pti.poster.model.post.GenericPost;
 import org.springframework.stereotype.Repository;
 
