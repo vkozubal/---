@@ -1,34 +1,32 @@
 package org.pti.poster.service;
 
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
+import org.joda.time.DateTime;
+import org.pti.poster.dao.repository.PostRepository;
 import org.pti.poster.model.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.Date;
 
 @Service
-public class PostService {
-    private static Collection<Post> inMemoryStore ;
-    {
-        // mocked initializtion
-        inMemoryStore= new ArrayList<Post>() {{
-            add(new Post("new Text1", Collections.<Post.Tag>emptyList()));
-            add(new Post("new Text2", Collections.<Post.Tag>emptyList()));
-            add(new Post("new Text3", Collections.<Post.Tag>emptyList()));
-            add(new Post("new Text4", Collections.<Post.Tag>emptyList()));
-        }};
-    } 
+public class PostService implements IPostService {
 
-    public Collection<Post> filterPostByDate(Calendar calendar) {
-        Collection<Post> result = new ArrayList<>();
-        for (Post post : inMemoryStore) {
-            if (theSameDay(post.getCreationDate(), calendar)) {
-                result.add(post);
-            }
-        }
-        return result;
+    @Autowired private PostRepository postRepository;
+    
+    public void save(Post post){
+        postRepository.save( post);
+    }
+
+    public void save(Iterable<Post> posts){
+        postRepository.save(posts);
+    }
+
+    public Iterable<Post> filterPostByDate(Date dateTime) {
+        DateTime now = new DateTime(dateTime);
+        return postRepository.inRange(now.withTimeAtStartOfDay().toDate(),
+                now.plusDays(1).withTimeAtStartOfDay().toDate());
     }
 
     /**
@@ -37,50 +35,38 @@ public class PostService {
      * @param post the object to be added
      * @return the id of the created post
      */
-    public long addPost(Post post) {
-        inMemoryStore.add(post);
-        return post.getId();
+    public BigInteger addPost(Post post) {
+        return postRepository.save(post).getId();
     }
 
-    public long update(Post post) {
-        return post.getId();
+    //  todo write test for update !!
+    public BigInteger update(Post post) {
+        return postRepository.save(post).getId();
     }
 
-    public Collection<Post> getAllPosts() {
-        return inMemoryStore;
+    public Iterable<Post> getAllPosts() {
+        return postRepository.findAll();
     }
 
-    public void remove(final Long id) {
-        inMemoryStore = Collections2.filter(inMemoryStore, new Predicate<Post>() {
-            @Override
-            public boolean apply(Post post) {
-                return post.getId().equals(id);
-            }
-        });
+    public void remove(final BigInteger id) {
+        postRepository.delete(id);
     }
 
-    public Post getById(final Long id) {
-        for (Post u : inMemoryStore) {
-            if (u.getId().equals(id)) {
-                return u;
-            }
-        }
-        return null;
-    }
-
-    private boolean theSameDay(Calendar cal1, Calendar cal2) {
-        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+    public Post getById(final BigInteger id) {
+        return postRepository.findOne(id);
     }
 
     /**
-     * todo review this method
-     * return  adds a tag to post with id {@param postId}  
+     * todo review this method and write test if necessary
+     * return  adds a tag to post with id {@param postId}
+     *
      * @param postId id of {@link org.pti.poster.model.Post} to be updated
-     * @param tag {@link org.pti.poster.model.Post.Tag}
+     * @param tag    {@link org.pti.poster.model.Post.Tag}
      * @return id of updated created post
      */
-    public Long addTag(Long postId, Post.Tag tag){
+
+    @Deprecated
+    public BigInteger addTag(BigInteger postId, Post.Tag tag) {
         getById(postId).getPostTags().add(tag);
         return postId;
     }

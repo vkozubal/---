@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public final class Constants {
+    public final static String DATE_PATTERN = "yyyy-MM-dd";
 
     public enum SECURITY {
 
@@ -31,4 +32,6 @@ public final class Constants {
             return getRolesAsString().toArray(new String[Constants.SECURITY.getRolesAsString().size()]);
         }
     }
+    
+    
 }

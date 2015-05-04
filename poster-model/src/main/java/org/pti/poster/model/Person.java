@@ -1,7 +1,8 @@
 package org.pti.poster.model;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,20 +13,17 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-@Document
+@Document(collection = "users")
+@TypeAlias("user")
 @Data
-public class Person implements UserDetails {
-
+public class Person extends AbstractDocument implements UserDetails {
     private String name;
     private String password;
-    @Id
-    private Long Id;
-    private Collection<Post> posts = new HashSet<>();
-    private Set<Constants.SECURITY> roles = new HashSet<>();
 
-    protected Person() {
-       /* Reflection instantiation */
-    }
+    @DBRef
+    private Collection<Post> posts = new HashSet<>();
+
+    private Set<Constants.SECURITY> roles = new HashSet<>();
 
     public Person(String name, String passwordHash) {
         this.name = name;
@@ -33,8 +31,7 @@ public class Person implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities()
-    {
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<Constants.SECURITY> roles = this.getRoles();
 
         if (roles == null) {
