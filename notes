@@ -15,3 +15,7 @@ http://localhost:8080/api/post/get?last=1
 
 
 localhost:21056/oauth/authorize?client_id=poster&redirect_uri=http://192.168.32.174:8080/api/swagger/index.html&response_type=token
+
+
+
+kate /etc/nginx/sites-available/default

@@ -1,0 +1,16 @@
+upstream backend {
+  ip_hash;
+  server 192.168.32.174:8080 fail_timeout=3;
+  server 192.168.32.174:8082 fail_timeout=3;
+}
+
+server {
+  listen 8811;
+  server_name poster;
+
+  location / {
+    proxy_pass http://backend/;
+    proxy_redirect default;
+    proxy_cookie_domain 192.168.32.174 poster;
+  }
+}
