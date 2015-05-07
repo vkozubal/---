@@ -1,16 +1,33 @@
-upstream backend {
+upstream poster {
   ip_hash;
-  server 192.168.32.174:8080 fail_timeout=3;
-  server 192.168.32.174:8082 fail_timeout=3;
+  server 192.168.32.174:8812 fail_timeout=3;
+  server 192.168.32.174:8813 fail_timeout=3;
 }
 
+upstream poster-auth {
+  ip_hash;
+  server 192.168.32.174:7712 fail_timeout=3;
+  server 192.168.32.174:7713 fail_timeout=3;
+}
+ 
 server {
   listen 8811;
   server_name poster;
-
+ 
   location / {
-    proxy_pass http://backend/;
+    proxy_pass http://poster/;
     proxy_redirect default;
     proxy_cookie_domain 192.168.32.174 poster;
+  }
+}
+
+server {
+  listen 7711;
+  server_name poster-auth;
+ 
+  location / {
+    proxy_pass http://poster-auth/;
+    proxy_redirect default;
+    proxy_cookie_domain 192.168.32.174 poster-auth;
   }
 }

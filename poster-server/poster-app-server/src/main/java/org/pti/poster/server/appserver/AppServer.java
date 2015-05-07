@@ -31,13 +31,13 @@ import java.util.Arrays;
 
 public class AppServer {
 
-	@Value("${oauth.resource:http://localhost:8080}")
+	@Value("${oauth.resource:http://localhost:8811}")
 	private String baseUrl;
 
-	@Value("${oauth.authorize:http://localhost:21056/oauth/authorize}")
+	@Value("${oauth.authorize:http://localhost:7711/oauth/authorize}")
 	private String authorizeUrl;
 
-	@Value("${oauth.token:http://localhost:21056/oauth/token}")
+	@Value("${oauth.token:http://localhost:7711/oauth/token}")
 	private String tokenUrl;
 
 	@Autowired
