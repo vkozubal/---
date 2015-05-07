@@ -2,7 +2,6 @@ package org.pti.poster.rest;
 
 import org.pti.poster.dto.user.GenericUserDto;
 import org.pti.poster.dto.user.NewUserDto;
-import org.pti.poster.dto.user.UnregisteredUserDto;
 import org.pti.poster.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
