@@ -3,6 +3,7 @@ package org.pti.poster.repository.post;
 
 import org.pti.poster.model.post.GenericPost;
 
+import java.io.Serializable;
 import java.util.List;
 
 public interface PostRepository {

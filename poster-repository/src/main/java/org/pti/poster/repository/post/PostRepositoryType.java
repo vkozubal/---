@@ -1,7 +1,7 @@
 package org.pti.poster.repository.post;
 
 public enum PostRepositoryType {
-	INMEMORY;
+	IN_MEMORY;
 
 	private String typeName;
 

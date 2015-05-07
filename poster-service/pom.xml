@@ -91,6 +91,11 @@
             <artifactId>hibernate-core</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

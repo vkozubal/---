@@ -30,7 +30,6 @@
         <commons-io.version>2.4</commons-io.version>
         <springloaded.version>1.2.1.RELEASE</springloaded.version>
         <swagger.springmvc.version>0.9.5</swagger.springmvc.version>
-        <hazelcast.version>3.4.2</hazelcast.version>
     </properties>
 
     <dependencyManagement>
@@ -100,13 +99,6 @@
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>com.hazelcast</groupId>
-                <artifactId>hazelcast</artifactId>
-                <version>${hazelcast.version}</version>
-            </dependency>
-
 
         </dependencies>
     </dependencyManagement>

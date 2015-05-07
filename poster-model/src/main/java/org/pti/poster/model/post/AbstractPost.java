@@ -3,9 +3,11 @@ package org.pti.poster.model.post;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public abstract class AbstractPost {
+public abstract class AbstractPost implements Serializable {
 
 	public final static String DATE_FORMAT = "dd.MM.yyyy";
 

@@ -11,10 +11,10 @@ import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Repository("inMemoryPostRepository")
-public class InMemoryPostRepository implements PostRepository {
+public class InMemoryPostRepository implements PostRepository{
 
-	public final static PostRepositoryType TYPE = PostRepositoryType.INMEMORY;
-	Map<String, GenericPost> allPosts;
+	public final static PostRepositoryType TYPE = PostRepositoryType.IN_MEMORY;
+	private Map<String, GenericPost> allPosts;
 
 	@PostConstruct
 	public void init() {
@@ -23,7 +23,7 @@ public class InMemoryPostRepository implements PostRepository {
 
 	@Override
 	public GenericPost getPostById(String id) {
-		return (GenericPost) allPosts.get(id);
+		return allPosts.get(id);
 	}
 
 	@Override

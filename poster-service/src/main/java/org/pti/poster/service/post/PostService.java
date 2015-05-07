@@ -10,4 +10,5 @@ public interface PostService {
 	GenericPostCollectionDto getLastPosts(int number);
 
 	GenericPostDto savePost(GenericPostDto newPostDto);
+
 }

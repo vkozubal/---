@@ -28,14 +28,16 @@ public class PostServiceImpl implements PostService {
 
 	@PostConstruct
 	public void init() {
-		postRepository = postRepositoryFactory.getRepositoryOfType(PostRepositoryType.INMEMORY);
+		postRepository = postRepositoryFactory.getRepositoryOfType(PostRepositoryType.IN_MEMORY);
 	}
 
+	@Override
 	public GenericPostDto findPostById(String id) {
 		GenericPost queryResult = postRepository.getPostById(id);
 		return GenericPostAssembler.toDto(queryResult);
 	}
 
+	@Override
 	public GenericPostCollectionDto getLastPosts(int number) {
 		List<GenericPost> queryResult = postRepository.getLastPosts(number);
 		List<GenericPostDto> queryResultDto = GenericPostAssembler.toDto(queryResult);
@@ -43,6 +45,7 @@ public class PostServiceImpl implements PostService {
 		return new GenericPostCollectionDto(queryResultDto);
 	}
 
+	@Override
 	public GenericPostDto savePost(GenericPostDto newPostDto) {
 		GenericPost newPost = GenericPostAssembler.fromDto(newPostDto);
 
