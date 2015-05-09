@@ -37,24 +37,6 @@ Database configuration from official tutorial  https://docs.docker.com/examples/
 
 You can find out how to create a mongo db instance here: https://github.com/dockerfile/mongodb
 
-or 
+or with replication: https://github.com/inlight-media/docker-mongodb-replica-set
 
-# Format: sudo docker build --tag/-t <user-name>/<repository> .
-# Example:
-$ sudo docker build --tag my/repo .
-
-# Basic way
-# Usage: sudo docker run --name <name for container> -d <user-name>/<repository>
-$ sudo docker run --name mongo_instance_001 -d my/repo
-
-# Dockerized MongoDB, lean and mean!
-# Usage: sudo docker run --name <name for container> -d <user-name>/<repository> --noprealloc --smallfiles
-$ sudo docker run --name mongo_instance_001 -d my/repo --noprealloc --smallfiles
-
-# Checking out the logs of a MongoDB container
-# Usage: sudo docker logs <name for container>
-$ sudo docker logs mongo_instance_001
-
-# Playing with MongoDB
-# Usage: mongo --port <port you get from `docker ps`> 
-$ mongo --port 12345
+to start mongo run mongo localhost:<port>  (27017, 27018, 27019)
