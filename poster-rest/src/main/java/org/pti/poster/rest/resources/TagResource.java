@@ -19,6 +19,7 @@ import java.util.Collection;
 @RestController
 public class TagResource {
 
+    public static final String POSTS_ROOT = "/rest/posts/";
     @Autowired
     PostService postService;
 
@@ -30,7 +31,7 @@ public class TagResource {
         ArrayList<Post.Tag> tags = new ArrayList<>(initial.getPostTags());
         tags.add(tag);
         Post post = new Post(initial.getText(), tags);
-        response.setHeader(HttpHeaders.LOCATION, "/api/posts/" + String.valueOf(postService.addPost(post)));
+        response.setHeader(HttpHeaders.LOCATION, POSTS_ROOT + String.valueOf(postService.addPost(post)));
     }
 
     @ApiOperation(value = "Deletes tag from post")
@@ -40,7 +41,7 @@ public class TagResource {
         ArrayList<Post.Tag> tags = new ArrayList<>(initial.getPostTags());
         tags.remove(tag);
         Post post = new Post(initial.getText(), tags);
-        response.setHeader(HttpHeaders.LOCATION, "/api/posts/" + String.valueOf(postService.addPost(post)));
+        response.setHeader(HttpHeaders.LOCATION, POSTS_ROOT + String.valueOf(postService.addPost(post)));
     }
 
     @ApiOperation(value = "Get All post tags.")

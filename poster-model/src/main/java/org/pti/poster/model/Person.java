@@ -19,6 +19,7 @@ import java.util.Set;
 public class Person extends AbstractDocument implements UserDetails {
     private String name;
     private String password;
+    private boolean active = true;
 
     @DBRef
     private Collection<Post> posts = new HashSet<>();
@@ -68,6 +69,6 @@ public class Person extends AbstractDocument implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return active;
     }
 }

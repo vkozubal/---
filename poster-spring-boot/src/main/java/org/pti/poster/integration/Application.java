@@ -1,6 +1,7 @@
 package org.pti.poster.integration;
 
 
+import com.mangofactory.swagger.plugin.EnableSwagger;
 import org.pti.poster.integration.security.WebSecurityConfiguration;
 import org.pti.poster.rest.RestSpringConfig;
 import org.pti.poster.service.SpringServiceApplicationConfiguration;
@@ -16,6 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @EnableAutoConfiguration
 @EnableWebSecurity
 @ComponentScan
+@EnableSwagger
 @Import(value = {SpringServiceApplicationConfiguration.class, WebSecurityConfiguration.class, RestSpringConfig.class})
 public class Application extends WebMvcAutoConfiguration {
 

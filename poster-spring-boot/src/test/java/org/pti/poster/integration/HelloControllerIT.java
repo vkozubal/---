@@ -63,14 +63,10 @@ public class HelloControllerIT extends BaseITest {
 
         Post.Tag tag = new Post.Tag("added tag");
         String newLocation = given().contentType(MediaType.APPLICATION_JSON_VALUE).body(tag)
-                .when().post("/rest/posts/" + getIdFromLocation(location) + "/tags/")
+                .when().post(location + "/tags/")
                 .header(HttpHeaders.LOCATION);
 
-        assertEquals(get("/rest/posts/" + getIdFromLocation(newLocation)).as(PostView.class).getTags().size(), tags.size() + 1);
-    }
-
-    private String getIdFromLocation(String location) {
-        return location.substring(location.lastIndexOf("/") + 1);
+        assertEquals(get(newLocation).as(PostView.class).getTags().size(), tags.size() + 1);
     }
 
     private void assertTestCase(Post post) {

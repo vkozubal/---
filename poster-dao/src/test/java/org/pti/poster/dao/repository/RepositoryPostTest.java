@@ -1,4 +1,4 @@
-package org.pti.poster.dao;
+package org.pti.poster.dao.repository;
 
 import com.google.common.collect.Iterables;
 import com.mongodb.BasicDBList;
@@ -9,8 +9,8 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.pti.poster.dao.TestData;
 import org.pti.poster.dao.config.MongoConfiguration;
-import org.pti.poster.dao.repository.PostRepository;
 import org.pti.poster.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -49,7 +49,7 @@ public class RepositoryPostTest {
 
     @Test
     public void baseCrudOperationsTest() {
-        List<Post> posts = TestData.getPosts();
+        List<Post> posts = TestData.mockPosts();
         
         postRepository.save(posts);
         assertTrue("There should be all entities",

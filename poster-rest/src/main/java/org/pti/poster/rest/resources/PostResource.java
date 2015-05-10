@@ -42,7 +42,7 @@ public class PostResource {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "", method = RequestMethod.POST)
     public void createPost(@RequestBody PostView view, HttpServletResponse response) {
-        response.setHeader(HttpHeaders.LOCATION, "/api/posts/" + String.valueOf(postService.addPost(PostView.fromView(view))));
+        response.setHeader(HttpHeaders.LOCATION, TagResource.POSTS_ROOT + String.valueOf(postService.addPost(PostView.fromView(view))));
     }
 
     @ApiOperation(value = "Makes partial update", notes = "You can use POST to send either all available values or just a subset of available values. Returns the location of updated resource.")
@@ -55,7 +55,7 @@ public class PostResource {
     @ApiOperation(value = "Makes fully update of resource under identifier.", notes = "Since PUT is idempotent, you must send all possible values. Returns the location of updated resource.")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void addNewPost(@RequestBody PostView view, @PathVariable Long id, HttpServletResponse response) {
-        response.setHeader(HttpHeaders.LOCATION, "/api/posts/" + String.valueOf(postService.update(PostView.fromView(view))));
+        response.setHeader(HttpHeaders.LOCATION, TagResource.POSTS_ROOT + String.valueOf(postService.update(PostView.fromView(view))));
     }
 
     @ApiOperation(value = "Returns collection of posts")
