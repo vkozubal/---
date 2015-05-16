@@ -32,9 +32,8 @@ public class PostResource {
 
     @ApiOperation("Gets post by identifier")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public
     @ResponseBody
-    PostView getPostById(@PathVariable BigInteger id) {
+    public PostView getPostById(@PathVariable BigInteger id) {
         return PostView.fromPost(postService.getById(id));
     }
 
@@ -46,7 +45,6 @@ public class PostResource {
     }
 
     @ApiOperation(value = "Makes partial update", notes = "You can use POST to send either all available values or just a subset of available values. Returns the location of updated resource.")
-    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public void makePartialUpdate(@RequestBody PostView view, @PathVariable Long id, HttpServletResponse response) {
         response.setHeader(HttpHeaders.LOCATION, String.valueOf(view.getId()));

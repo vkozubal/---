@@ -1,13 +1,13 @@
 [
-{    
+{
 	"order_number" : 201513,
 	"date" : ISODate("2015-04-11"),
-	"total_sum" : 3453245,
+	"total_sum" : 34536,
 	"customer" : {
     	"name" : "Andrii",
     	"surname" : "Rodinov",
     	"phones" : [ 9876543, 1234567],
-    	"address" : "PTI, Peremohy 37, Kyiv, UA"
+    	"address" : "PTI, Peremohy 31, Kyiv, UA"
 	},
 	"payment" : {
     	"card_owner" : "Andrii Rodionov",
@@ -16,23 +16,30 @@
 	"order_items_id" : [
     	{
         	"$ref" : "items",
-        	"$id" : ObjectId("552bc0f7bbcdf26a32e99954")
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d85")
+    	},
+	  {
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d7c")
+    	},{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d7b")
     	},
     	{
         	"$ref" : "items",
-        	"$id" : ObjectId("552bc285bbcdf26a32e99957")
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d87")
     	}
 	]
 },
-{    
-	"order_number" : 201513,
-	"date" : ISODate("2015-04-11"),
-	"total_sum" : 3453245,
+{
+	"order_number" : 201514,
+	"date" : ISODate("2015-04-17"),
+	"total_sum" : 234,
 	"customer" : {
-    	"name" : "Andrii",
-    	"surname" : "Rodinov",
+    	"name" : "Vova",
+    	"surname" : "Putin",
     	"phones" : [ 9876543, 1234567],
-    	"address" : "PTI, Peremohy 37, Kyiv, UA"
+    	"address" : "PTI, Peremohy 32, Kyiv, UA"
 	},
 	"payment" : {
     	"card_owner" : "Andrii Rodionov",
@@ -41,14 +48,116 @@
 	"order_items_id" : [
     	{
         	"$ref" : "items",
-        	"$id" : ObjectId("552bc0f7bbcdf26a32e99954")
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d88")
+    	},{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d80")
     	},
     	{
         	"$ref" : "items",
-        	"$id" : ObjectId("552bc285bbcdf26a32e99957")
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d86")
+    	},
+	  	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d82")
+    	}
+	]
+},
+  {
+	"order_number": 201515,
+	"date": ISODate("2015-04-13"),
+	"total_sum": 3453245,
+	"customer": {
+	  "name": "Phillip",
+	  "surname": "Kirkorow",
+	  "phones": [
+		9876543,
+		1234567
+	  ],
+	  "address": "PTI, Peremohy 33, Kyiv, UA"
+	},
+	"payment": {
+	  "card_owner": "Andrii Rodionov",
+	  "cardId": 12345678
+	},
+	"order_items_id": [
+	  {
+		"$ref": "items",
+		"$id": ObjectId("5556456b87cf89b9ffb43d89")
+	  },
+	  {
+		"$ref": "items",
+		"$id": ObjectId("5556456b87cf89b9ffb43d83")
+	  },
+	  {
+		"$ref": "items",
+		"$id": ObjectId("5556456b87cf89b9ffb43d84")
+	  },
+	  {
+		"$ref": "items",
+		"$id": ObjectId("5556456b87cf89b9ffb43d81")
+	  }
+	],
+  },
+{
+	"order_number" : 201519,
+	"date" : ISODate("2015-04-13"),
+	"total_sum" : 3453245,
+	"customer" : {
+    	"name" : "Vitalii",
+    	"surname" : "Dyrnjiev",
+    	"phones" : [ 9876543, 1234567],
+    	"address" : "PTI, Peremohy 39, Kyiv, UA"
+	},
+	"payment" : {
+    	"card_owner" : "Andrii Rodionov",
+    	"cardId" : 12345678
+	},
+	"order_items_id" : [
+    	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d82")
+    	},{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d7f")
+    	},
+    	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d7e")
+    	},
+    	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d7d")
     	}
 	]
 }
-
-
+  
+  {
+	"order_number" : 2015120,
+	"date" : ISODate("2015-04-15"),
+	"total_sum" : 3453245,
+	"customer" : {
+    	"name" : "Vitalii",
+    	"surname" : "Dyrnjiev",
+    	"phones" : [ 9876543, 1234567],
+    	"address" : "PTI, Peremohy 39, Kyiv, UA"
+	},
+	"payment" : {
+    	"card_owner" : "Andrii Rodionov",
+    	"cardId" : 12345678
+	},
+	"order_items_id" : [
+    	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d78")
+    	},{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d79")
+    	},
+    	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("5556456b87cf89b9ffb43d7a")
+    	}
+	]
+}
 ]
