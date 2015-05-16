@@ -1,0 +1,54 @@
+[
+{    
+	"order_number" : 201513,
+	"date" : ISODate("2015-04-11"),
+	"total_sum" : 3453245,
+	"customer" : {
+    	"name" : "Andrii",
+    	"surname" : "Rodinov",
+    	"phones" : [ 9876543, 1234567],
+    	"address" : "PTI, Peremohy 37, Kyiv, UA"
+	},
+	"payment" : {
+    	"card_owner" : "Andrii Rodionov",
+    	"cardId" : 12345678
+	},
+	"order_items_id" : [
+    	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("552bc0f7bbcdf26a32e99954")
+    	},
+    	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("552bc285bbcdf26a32e99957")
+    	}
+	]
+},
+{    
+	"order_number" : 201513,
+	"date" : ISODate("2015-04-11"),
+	"total_sum" : 3453245,
+	"customer" : {
+    	"name" : "Andrii",
+    	"surname" : "Rodinov",
+    	"phones" : [ 9876543, 1234567],
+    	"address" : "PTI, Peremohy 37, Kyiv, UA"
+	},
+	"payment" : {
+    	"card_owner" : "Andrii Rodionov",
+    	"cardId" : 12345678
+	},
+	"order_items_id" : [
+    	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("552bc0f7bbcdf26a32e99954")
+    	},
+    	{
+        	"$ref" : "items",
+        	"$id" : ObjectId("552bc285bbcdf26a32e99957")
+    	}
+	]
+}
+
+
+]
