@@ -1,0 +1,15 @@
+{
+  "name": "poster-client-browser",
+  "version": "1.0.0",
+  "description": "poster-client-browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zeksa",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "bower": "~1.4.1"
+  }
+}
