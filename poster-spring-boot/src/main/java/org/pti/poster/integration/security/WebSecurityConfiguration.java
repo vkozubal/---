@@ -1,8 +1,10 @@
 package org.pti.poster.integration.security;
 
 import org.pti.poster.model.Constants;
+import org.pti.poster.service.interfaces.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.encoding.PlaintextPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -14,10 +16,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private IPersonService personService;
+
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles(Constants.SECURITY.USER_ROLE.role).and()
-                .withUser("admin").password("password").roles(Constants.SECURITY.getAllRolesAsArray());
+//        PasswordEncoder encoder = new ShaPasswordEncoder(); // use this if you want too store encrypted passwords in the db.
+        PlaintextPasswordEncoder encoder = new PlaintextPasswordEncoder();
+        auth.userDetailsService(personService).passwordEncoder(encoder);
+
+//        auth.inMemoryAuthentication()
+//                .withUser("user").password("password").roles(Constants.SECURITY.USER_ROLE.role).and()
+//                .withUser("admin").password("password").roles(Constants.SECURITY.getAllRolesAsArray());
     }
 
     @Override
@@ -25,6 +34,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 .antMatchers("/webjars/swagger-ui/**")
                 .antMatchers("/api-docs/**");
+//                .antMatchers("/rest/user/authenticate");
     }
 
     @Override
@@ -34,14 +44,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/signup", "/about", "/rest/user/authenticate").permitAll() // #4
                 .antMatchers("/admin/**").hasRole(Constants.SECURITY.ADMIN_ROLE.role) // #6
-//                .antMatchers("/app/api/rest/user/").hasRole(Constants.SECURITY.USER_ROLE.role)
+//                .antMatchers("/rest/user/**").hasRole(Constants.SECURITY.ADMIN_ROLE.role)
+//                .antMatchers("/rest/**").hasRole(Constants.SECURITY.USER_ROLE.role)
                 .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .permitAll();
-        // todo fix the login form on ui
-//                .and()
-//                .formLogin().loginPage("/login").permitAll()
-//                .and().httpBasic();
+                .and().formLogin().permitAll();
     }
 }

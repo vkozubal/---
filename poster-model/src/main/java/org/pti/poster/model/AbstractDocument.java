@@ -1,11 +1,14 @@
 package org.pti.poster.model;
 
 
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-public class AbstractDocument {
+@EqualsAndHashCode
+public class AbstractDocument implements Serializable{
 
     @Id
     private BigInteger documentId;
@@ -17,6 +20,5 @@ public class AbstractDocument {
     public void setId(BigInteger id) {
         this.documentId = id;
     }
-
 }
 

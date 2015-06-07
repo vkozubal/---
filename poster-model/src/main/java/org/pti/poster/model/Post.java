@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -62,7 +63,7 @@ public final class Post extends AbstractDocument {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    private static class Version {
+    private static class Version implements Serializable{
 
         private Long previousVersionId;
         private Integer versionNumber;
@@ -79,7 +80,7 @@ public final class Post extends AbstractDocument {
     @NoArgsConstructor
     @EqualsAndHashCode
     @Data
-    public static class Tag {
+    public static class Tag implements Serializable{
         private String text;
 
         public Tag(String text) {

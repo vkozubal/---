@@ -1,6 +1,7 @@
 package org.pti.poster.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,9 +14,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Document(collection = "users")
 @TypeAlias("user")
-@Data
 public class Person extends AbstractDocument implements UserDetails {
     private String name;
     private String password;
@@ -26,9 +28,9 @@ public class Person extends AbstractDocument implements UserDetails {
 
     private Set<Constants.SECURITY> roles = new HashSet<>();
 
-    public Person(String name, String passwordHash) {
+    public Person(String name, String password) {
         this.name = name;
-        this.password = passwordHash;
+        this.password = password;
     }
 
     @Override
@@ -47,6 +49,15 @@ public class Person extends AbstractDocument implements UserDetails {
         return authorities;
     }
 
+    
+    public void addPost(Post post){
+      getPosts().add(post);  
+    }
+
+    public void addPostAll(Collection<Post> postsToAdd){
+        getPosts().addAll(postsToAdd);
+    }
+    
     @Override
     public String getUsername() {
         return this.name;

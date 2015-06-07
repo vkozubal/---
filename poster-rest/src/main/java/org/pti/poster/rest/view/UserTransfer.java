@@ -1,8 +1,10 @@
 package org.pti.poster.rest.view;
 
+import lombok.Getter;
+
 import java.util.Map;
 
-
+@Getter
 public class UserTransfer {
 
     private final String name;
@@ -14,15 +16,4 @@ public class UserTransfer {
         this.name = userName;
         this.roles = roles;
     }
-
-
-    public String getName() {
-        return this.name;
-    }
-
-
-    public Map<String, Boolean> getRoles() {
-        return this.roles;
-    }
-
 }

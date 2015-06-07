@@ -28,6 +28,27 @@
             <artifactId>poster-dao</artifactId>
             <version>${project.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.pti</groupId>
+            <artifactId>poster-dao</artifactId>
+            <version>${project.version}</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+
+        <!--doesn't work as transitive dependency-->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+        </dependency>
+        
+        <!--todo check why this doesn't work as transitive dependency-->
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>

@@ -1,6 +1,7 @@
 package org.pti.poster.integration;
 
 import com.jayway.restassured.response.Response;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -21,6 +22,7 @@ import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 @SpringApplicationConfiguration(classes = Application.class)
+@Slf4j
 public class HelloControllerIT extends BaseITest {
 
     @Parameterized.Parameter(value = 0)
@@ -46,7 +48,7 @@ public class HelloControllerIT extends BaseITest {
         });
     }
 
-    @Test
+    @Test   //fixme
     public void newPostHaveBeenAdded() {
         // todo check why so much data id database !!!!!
         given().contentType(MediaType.APPLICATION_JSON_VALUE).body(view).when().post("rest/posts").then().statusCode(HttpStatus.CREATED.value());
@@ -55,17 +57,21 @@ public class HelloControllerIT extends BaseITest {
         assertTestCase(post);
     }
 
-    @Test
+    @Test   //fixme
     public void tagToExistingPostHaveBeenAdded() {
         Response response = given().contentType(MediaType.APPLICATION_JSON_VALUE).body(view).when().post("/rest/posts");
         String location = response.header(HttpHeaders.LOCATION);
         response.then().statusCode(HttpStatus.CREATED.value());
 
         Post.Tag tag = new Post.Tag("added tag");
-        String newLocation = given().contentType(MediaType.APPLICATION_JSON_VALUE).body(tag)
-                .when().post(location + "/tags/")
+        Response postResponse = given().contentType(MediaType.APPLICATION_JSON_VALUE).body(tag)
+                .when().post(location + "/tags/");
+        
+        assertEquals(postResponse.getStatusCode(), HttpStatus.CREATED.value());
+        String newLocation = postResponse
                 .header(HttpHeaders.LOCATION);
 
+        assertNotNull(newLocation);
         assertEquals(get(newLocation).as(PostView.class).getTags().size(), tags.size() + 1);
     }
 

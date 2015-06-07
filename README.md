@@ -26,7 +26,7 @@ The spring security configuration ensures that:
 
 we can put swagger sources under resources/static directory of spring boot module
 but we are using swagger-ui webjar 
-so to access swagger please go to: http://localhost:8080/webjars/swagger-ui/2.0.12/index.html
+so to access swagger please go to: http://localhost:<port>/webjars/swagger-ui/2.1.8-M1/index.html
 and put there http://localhost:8080/api-docs address.
 
 Documentation: https://drive.google.com/folderview?id=0B5KXxwMdmpt1MDQ4bVJNU2xDNms&usp=sharing

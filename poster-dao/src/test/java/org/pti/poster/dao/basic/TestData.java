@@ -1,4 +1,4 @@
-package org.pti.poster.dao;
+package org.pti.poster.dao.basic;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;

@@ -27,6 +27,11 @@ public class Application extends WebMvcAutoConfiguration {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+
+//        new SpringApplicationBuilder(ParentConfiguration.class)
+//                .profiles("adminServer", "single")
+//                .child(AdminServerApplication.class)
+//                .run(args);
     }
 
 

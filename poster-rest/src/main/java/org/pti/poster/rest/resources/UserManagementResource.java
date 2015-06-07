@@ -2,25 +2,26 @@ package org.pti.poster.rest.resources;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import org.pti.poster.model.Person;
 import org.pti.poster.rest.TokenUtils;
 import org.pti.poster.rest.view.TokenTransfer;
 import org.pti.poster.rest.view.UserTransfer;
-import org.pti.poster.service.PersonService;
+import org.pti.poster.service.impl.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.FormParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,8 +31,7 @@ import java.util.Map;
 @Produces(MediaType.APPLICATION_JSON)
 public class UserManagementResource {
 
-    @Autowired
-    PersonService personService;
+    @Autowired private PersonService personService;
 
     @Autowired
     @Qualifier("authenticationManager")
@@ -40,15 +40,30 @@ public class UserManagementResource {
     @ApiOperation(value = "Returns a user by id.")
     @RequestMapping(value = "", method = RequestMethod.GET)
     public UserTransfer getUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = authentication.getPrincipal();
-        if (principal instanceof String && principal.equals("anonymousUser")) {
-//            throw new WebApplicationException(401); TODO
-            throw new IllegalStateException("401");
-        }
-        UserDetails userDetails = (UserDetails) principal;
-
+        UserDetails userDetails = Utils.getCurrentUserDetails();
         return new UserTransfer(userDetails.getUsername(), this.createRoleMap(userDetails));
+    }
+
+    private Map<String, Boolean> createRoleMap(UserDetails userDetails) {
+        Map<String, Boolean> roles = new HashMap<>();
+        for (GrantedAuthority authority : userDetails.getAuthorities()) {
+            roles.put(authority.getAuthority(), Boolean.TRUE);
+        }
+        return roles;
+    }
+
+    @ApiOperation(value = "Creates a new user.")
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public BigInteger addUser(@RequestBody Person person) {
+        return personService.addUser(person);
+    }
+
+
+    @ApiOperation(value = "Deletes existing user.")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable BigInteger id) {
+        personService.remove(id);
     }
 
     /**
@@ -71,26 +86,4 @@ public class UserManagementResource {
         UserDetails userDetails = this.personService.loadUserByUsername(username);
         return new TokenTransfer(TokenUtils.createToken(userDetails));
     }
-
-    private Map<String, Boolean> createRoleMap(UserDetails userDetails) {
-        Map<String, Boolean> roles = new HashMap<String, Boolean>();
-        for (GrantedAuthority authority : userDetails.getAuthorities()) {
-            roles.put(authority.getAuthority(), Boolean.TRUE);
-        }
-        return roles;
-    }
-
-//    @ApiOperation(value = "Creates a new user.")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @RequestMapping(value = "/", method = RequestMethod.POST)
-//    public Long addUser(@RequestBody Person person){
-//        return personService.addUser(person);
-//    }
-//
-//
-//    @ApiOperation(value = "Deletes existing user.")
-//    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-//    public void deleteUser(@PathVariable Long id){
-//        personService.remove(id);
-//    }
 }

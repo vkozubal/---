@@ -1,22 +1,17 @@
 package org.pti.poster.dao.repository;
 
 import com.mongodb.DBObject;
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.pti.poster.dao.TestData;
-import org.pti.poster.dao.config.MongoConfiguration;
+import org.pti.poster.dao.basic.AbstractEmbeddedMongoDBTest;
+import org.pti.poster.dao.basic.TestData;
 import org.pti.poster.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static junit.framework.TestCase.assertNotNull;
 
-@ContextConfiguration(classes = {MongoConfiguration.class})
-@RunWith(SpringJUnit4ClassRunner.class)
-public class StatisticsRepositoryTest extends TestCase {
+public class StatisticsRepositoryTest extends AbstractEmbeddedMongoDBTest<Person> {
 
     @Autowired IStatisticsRepository statisticsRepository;
     @Autowired PersonRepository personRepository;
@@ -24,9 +19,6 @@ public class StatisticsRepositoryTest extends TestCase {
 
     @Before
     public void testGetStatByRoles() throws Exception {
-        if (mongoOps.collectionExists(Person.class)) {
-            mongoOps.dropCollection(Person.class);
-        }
         personRepository.save(TestData.mockedUsers(100));
     }
 

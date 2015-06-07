@@ -40,7 +40,7 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
@@ -68,8 +68,31 @@
         </dependency>
 
         <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>com.github.fakemongo</groupId>-->
+        <!--<artifactId>fongo</artifactId>-->
+        <!--<version>1.5.8</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

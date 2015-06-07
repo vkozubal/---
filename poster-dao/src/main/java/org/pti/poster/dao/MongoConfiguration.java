@@ -1,4 +1,4 @@
-package org.pti.poster.dao.config;
+package org.pti.poster.dao;
 
 
 import com.mongodb.Mongo;
@@ -6,16 +6,19 @@ import com.mongodb.MongoClient;
 import com.mongodb.WriteConcern;
 import org.pti.poster.dao.Constants.DATABASE;
 import org.pti.poster.dao.repository.RepositoryPackage;
+import org.pti.poster.model.SpringConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
 @EnableMongoRepositories(basePackageClasses = RepositoryPackage.class)
-@ComponentScan(basePackages = {"org.pti.poster.dao", "org.pti.poster.model"})/*(basePackageClasses = TemplatePackage.class)*/
+@ComponentScan
+@Import(value = SpringConfiguration.class)
 public class MongoConfiguration extends AbstractMongoConfiguration {
 
     // ---------------------------------------------------- mongodb config

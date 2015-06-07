@@ -25,7 +25,7 @@ public class PostView {
         return postView;
     }
 
-    public static Post fromView(PostView view) {
+    public static Post transformToPost(PostView view) {
         return new Post(view.getText(), view.getTags());
     }
 }
