@@ -2,28 +2,14 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <!--    todo change the parent of this pom to org.pti.poster current parent is just for sake of configuration of spring-boot-maven-plugin   -->
+    
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.2.RELEASE</version>
+        <artifactId>poster</artifactId>
+        <groupId>org.pti</groupId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.pti</groupId>
     <artifactId>poster-spring-boot</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <!--    here we are using tomcat 8 :)   -->
-        <tomcat.version>8.0.3</tomcat.version>
-        
-        <rest.assured.version>2.4.0</rest.assured.version>
-        <swagger-ui.version>2.1.8-M1</swagger-ui.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <hazelcast.version>3.4.2</hazelcast.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -34,7 +20,6 @@
         <dependency>
             <groupId>org.pti</groupId>
             <artifactId>poster-rest</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
@@ -66,26 +51,17 @@
         <dependency>
             <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>${rest.assured.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>2.0.3-1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.webjars</groupId>
             <artifactId>swagger-ui</artifactId>
-            <version>${swagger-ui.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-wm</artifactId>
-            <version>${hazelcast.version}</version>
         </dependency>
     </dependencies>
 
@@ -95,6 +71,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.18.1</version>

@@ -26,7 +26,6 @@
         <dependency>
             <groupId>org.pti</groupId>
             <artifactId>poster-dao</artifactId>
-            <version>${project.version}</version>
         </dependency>
         
         <dependency>
