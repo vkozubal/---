@@ -6,6 +6,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.pti.poster.model.Constants;
 import org.pti.poster.model.Person;
 import org.pti.poster.model.Post;
+import org.pti.poster.model.Tag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,11 +47,11 @@ public class TestData {
     }
 
     private static final class Tags {
-        public static final Post.Tag tagZero = new Post.Tag("tag number 0");
-        public static final Post.Tag tagFirst = new Post.Tag("tag number 1");
-        public static final Post.Tag tagSecond = new Post.Tag("tag number 2");
-        public static final Post.Tag tagThird = new Post.Tag("tag number 3");
-        public static final Post.Tag tagFourth = new Post.Tag("tag number 4");
-        public static final Post.Tag tagFifth = new Post.Tag("tag number 5");
+        public static final Tag tagZero = new Tag("tag number 0");
+        public static final Tag tagFirst = new Tag("tag number 1");
+        public static final Tag tagSecond = new Tag("tag number 2");
+        public static final Tag tagThird = new Tag("tag number 3");
+        public static final Tag tagFourth = new Tag("tag number 4");
+        public static final Tag tagFifth = new Tag("tag number 5");
     }
 }

@@ -2,6 +2,7 @@ package org.pti.poster.rest;
 
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.pti.poster.model.Constants;
@@ -21,8 +22,15 @@ public class RestSpringConfig {
     public Jackson2ObjectMapperBuilder jacksonBuilder() {
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
         
-        builder.featuresToEnable(DeserializationFeature.USE_BIG_INTEGER_FOR_INTS,
-                DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS, DeserializationFeature.UNWRAP_SINGLE_VALUE_ARRAYS);
+        builder.featuresToEnable(
+                DeserializationFeature.USE_BIG_INTEGER_FOR_INTS,
+                DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS, 
+                DeserializationFeature.UNWRAP_SINGLE_VALUE_ARRAYS
+        );
+        
+        builder.featuresToDisable(
+                SerializationFeature.WRITE_EMPTY_JSON_ARRAYS
+        );
         
         builder.indentOutput(true).dateFormat(new SimpleDateFormat(Constants.DATE_PATTERN));
         

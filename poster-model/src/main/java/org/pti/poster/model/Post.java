@@ -14,7 +14,19 @@ import java.util.Date;
 @Document(collection = "posts")
 @TypeAlias("post")
 @Getter
-public final class Post extends AbstractDocument {
+@ToString
+// rest doesn't work with final classes todo
+/*
+{
+        "timestamp": 1440356035995,
+        "status": 500,
+        "error": "Internal Server Error",
+        "exception": "java.lang.IllegalArgumentException",
+        "message": "Cannot subclass final class class org.pti.poster.model.Post",
+        "path": "/rest/posts"
+        }
+*/
+public /*final*/ class Post extends AbstractDocument {
 
     private final Version version;
 
@@ -25,7 +37,10 @@ public final class Post extends AbstractDocument {
     private final Date creationDate;
 
     public Post() {
-        this(null, new ArrayList<Tag>());
+        this(null, new ArrayList<>());
+    }
+    public Post(String text) {
+        this(text, new ArrayList<>());
     }
 
     public Post(String text, Collection<Tag> postTags) {
@@ -42,58 +57,15 @@ public final class Post extends AbstractDocument {
         this.version = new Version(prevPostId, ++version);
     }
 
-    public Post(String text) {
-        this(text, new ArrayList<Tag>());
-    }
-
     public Collection<Tag> getPostTags() {
         return ImmutableList.copyOf(postTags);
-    }
-
-    @Override
-    public String toString() {
-        return "Post{" +
-                "version=" + version +
-                ", postTags=" + postTags +
-                ", text='" + text + '\'' +
-                ", creationDate=" + creationDate +
-                '}';
     }
 
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
     private static class Version implements Serializable{
-
         private Long previousVersionId;
         private Integer versionNumber;
-
-        @Override
-        public String toString() {
-            return "Version{" +
-                    "previousVersionId=" + previousVersionId +
-                    ", versionNumber=" + versionNumber +
-                    '}';
-        }
     }
-
-    @NoArgsConstructor
-    @EqualsAndHashCode
-    @Data
-    public static class Tag implements Serializable{
-        private String text;
-
-        public Tag(String text) {
-            this.text = text;
-        }
-
-        @Override
-        public String toString() {
-            return "Tag{" +
-                    "text='" + text + '\'' +
-                    '}';
-        }
-    }
-    
-    
 }

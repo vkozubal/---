@@ -1,7 +1,6 @@
 package org.pti.poster.service.impl;
 
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -53,12 +52,7 @@ public class PostService implements IPostService {
         Person person = getPerson(details.getUsername());
 
         return FluentIterable.from(person.getPosts())
-                .firstMatch(new Predicate<Post>() {
-                    @Override
-                    public boolean apply(Post element) {
-                        return element.getId().equals(id);
-                    }
-                })
+                .firstMatch(element -> element.getId().equals(id))
                 .orNull();
     }
 

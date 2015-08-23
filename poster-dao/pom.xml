@@ -17,7 +17,6 @@
         <dependency>
             <groupId>org.pti</groupId>
             <artifactId>poster-model</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!--    Other dependencies      -->
@@ -63,8 +62,8 @@
 
         <!--Test dependencies-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
         <dependency>
@@ -79,12 +78,6 @@
         <!--<version>1.5.8</version>-->
         <!--<scope>test</scope>-->
         <!--</dependency>-->
-
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
