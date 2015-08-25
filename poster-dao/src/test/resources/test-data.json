@@ -1,0 +1,110 @@
+[
+  {
+    "version": {
+      "previousVersionId": null,
+      "versionNumber": 1
+    },
+    "postTags": [
+      {
+        "text": "tag number 4"
+      },
+      {
+        "text": "tag number 1"
+      }
+    ],
+    "text": "first post",
+    "creationDate": {"$date": "2015-05-03T14:01:45.166Z"}
+  },
+  {
+    "version": {
+      "previousVersionId": null,
+      "versionNumber": 1
+    },
+    "postTags": [
+      {
+        "text": "tag number 4"
+      }
+    ],
+    "text": "second post",
+    "creationDate": {"$date": "2015-05-02T14:01:45.166Z"}
+  },
+  {
+    "version": {
+      "previousVersionId": null,
+      "versionNumber": 1
+    },
+    "postTags": [
+      {
+        "text": "tag number 5"
+      },
+      {
+        "text": "tag number 2"
+      },
+      {
+        "text": "tag number 1"
+      }
+    ],
+    "text": "third post",
+    "creationDate": {"$date": "2015-05-04T14:01:45.166Z"}
+  },
+  {
+    "version": {
+      "previousVersionId": null,
+      "versionNumber": 1
+    },
+    "postTags": [
+      {
+        "text": "tag number 4"
+      },
+      {
+        "text": "tag number 1"
+      }
+    ],
+    "text": "fifth post",
+    "creationDate": {"$date": "2015-05-05T14:01:45.166Z"}
+  },
+  {
+    "version": {
+      "previousVersionId": null,
+      "versionNumber": 1
+    },
+    "postTags": [
+      {
+        "text": "tag number 5"
+      },
+      {
+        "text": "tag number 0"
+      },
+      {
+        "text": "tag number 3"
+      },
+      {
+        "text": "tag number 1"
+      }
+    ],
+    "text": "sixth post",
+    "creationDate": {"$date": "2015-05-01T14:01:45.166Z"}
+  },
+  {
+    "version": {
+      "previousVersionId": null,
+      "versionNumber": 1
+    },
+    "postTags": [
+      {
+        "text": "tag number 5"
+      },
+      {
+        "text": "tag number 0"
+      },
+      {
+        "text": "tag number 3"
+      },
+      {
+        "text": "tag number 1"
+      }
+    ],
+    "text": "sixth post1",
+    "creationDate": {"$date": "2015-05-02T14:01:45.166Z"}
+  }
+]
