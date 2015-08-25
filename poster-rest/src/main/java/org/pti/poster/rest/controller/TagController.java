@@ -1,4 +1,4 @@
-package org.pti.poster.rest.resources;
+package org.pti.poster.rest.controller;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;

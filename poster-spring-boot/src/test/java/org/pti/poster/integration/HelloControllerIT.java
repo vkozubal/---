@@ -25,7 +25,7 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @Slf4j
-public class HelloControllerIT extends BaseITest {
+public class HelloControllerIT extends ATestIT {
 
     @Parameterized.Parameter(value = 0)
     public /* NOT private */ Collection<String> tags;
@@ -57,7 +57,7 @@ public class HelloControllerIT extends BaseITest {
 
     @Test
     public void newPostHaveBeenAdded() {
-        // todo check why so much data in database !!!!! do we use embedded mongo instance ?
+        // check why so much data in database !!!!! do we use embedded mongo instance ? todo check
         given().contentType(MediaType.APPLICATION_JSON_VALUE).body(view).when().post("rest/posts").then().statusCode(HttpStatus.CREATED.value());
         Post[] as = get("/rest/posts").as(Post[].class);
         Post post = getByPostText(as, postText);

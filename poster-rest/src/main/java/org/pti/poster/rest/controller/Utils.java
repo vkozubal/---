@@ -1,4 +1,4 @@
-package org.pti.poster.rest.resources;
+package org.pti.poster.rest.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
