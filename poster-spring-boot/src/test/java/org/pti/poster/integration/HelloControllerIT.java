@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.pti.poster.model.Post;
 import org.pti.poster.model.Tag;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,7 +22,6 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-@SpringApplicationConfiguration(classes = Application.class)
 @Slf4j
 public class HelloControllerIT extends ATestIT {
 

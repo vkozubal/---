@@ -10,6 +10,7 @@ import org.pti.poster.service.impl.PersonService;
 import org.pti.poster.service.impl.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,6 +21,7 @@ import static org.junit.Assert.assertEquals;
 @Configuration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestSprintServiceApplicationConfiguration.class})
+@ActiveProfiles("test")
 public class PostServiceTest {
 
     @Autowired private PersonService personService;

@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,6 +24,7 @@ import javax.servlet.DispatcherType;
 @SpringBootApplication
 @EnableWebSecurity
 @EnableSwagger
+@Configuration
 @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)
 @Import(value = {SpringServiceApplicationConfiguration.class, WebSecurityConfiguration.class, RestSpringConfig.class})
 public class Application extends WebMvcAutoConfiguration {

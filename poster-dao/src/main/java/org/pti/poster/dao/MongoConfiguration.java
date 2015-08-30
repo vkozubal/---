@@ -5,17 +5,16 @@ import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.WriteConcern;
 import org.pti.poster.dao.Constants.DATABASE;
-import org.pti.poster.dao.repository.RepositoryPackage;
-import org.pti.poster.model.SpringConfiguration;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackageClasses = RepositoryPackage.class)
-@ComponentScan
-@Import(value = SpringConfiguration.class)
+@Import(DaoConfiguration.class)
+@Profile("live")
 public class MongoConfiguration extends AbstractMongoConfiguration {
 
     // ---------------------------------------------------- mongodb config

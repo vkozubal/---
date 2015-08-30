@@ -3,7 +3,7 @@ package org.pti.poster.dao.repository;
 import com.mongodb.DBObject;
 import org.junit.Before;
 import org.junit.Test;
-import org.pti.poster.dao.basic.AbstractEmbeddedMongoDBTest;
+import org.pti.poster.dao.AbstractEmbeddedMongoDBTest;
 import org.pti.poster.dao.basic.TestData;
 import org.pti.poster.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package org.pti.poster.dao.repository;
 
 import com.google.common.collect.Iterables;
 import org.junit.Test;
-import org.pti.poster.dao.basic.AbstractEmbeddedMongoDBTest;
+import org.pti.poster.dao.AbstractEmbeddedMongoDBTest;
 import org.pti.poster.dao.basic.TestData;
 import org.pti.poster.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;

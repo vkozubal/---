@@ -1,4 +1,4 @@
-HOW TO RUN:
+# HOW TO RUN:
 
     REQUIREMENTS:
     - assembled jar file
@@ -9,7 +9,7 @@ HOW TO RUN:
     - you can build it by yourself
     - you ask somebody to build for you
 
-HOW TO BUILD JAR FILE:
+# HOW TO BUILD JAR FILE:
 
     REQUIREMENTS:
     - java 1.7
@@ -40,3 +40,9 @@ You can find out how to create a mongo db instance here: https://github.com/dock
 or with replication: https://github.com/inlight-media/docker-mongodb-replica-set
 
 to start mongo run mongo localhost:<port>  (27017, 27018, 27019)
+
+
+## Spring profiles:
+we currently use two profiles: live and test
+    -live (production ready profile)
+    -test (used to replace some beans in tests)
