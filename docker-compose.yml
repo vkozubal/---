@@ -1,0 +1,16 @@
+authclient:
+  image: springio/oauth-server
+  net: "host"
+#  ports:
+#  - "9000:9000"
+# port exposing is not reqired as we use host networking mode
+
+authserver:
+  image: springio/demo
+  net: "host"
+#  ports:
+#  - "9999:9999"
+# port exposing is not reqired as we use host networking mode
+
+# if you want to get ride of host networking mode
+# http://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach

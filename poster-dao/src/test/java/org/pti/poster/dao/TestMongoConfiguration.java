@@ -11,10 +11,7 @@ import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 import org.pti.poster.dao.repository.RepositoryPackage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -22,7 +19,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Configuration
 @PropertySource("application.properties")
 @EnableMongoRepositories(basePackageClasses = RepositoryPackage.class)
-@ComponentScan
+@Import(DaoConfiguration.class)
 @Profile("test")
 public class TestMongoConfiguration extends AbstractMongoConfiguration {
 

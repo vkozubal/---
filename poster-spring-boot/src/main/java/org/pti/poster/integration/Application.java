@@ -4,7 +4,6 @@ package org.pti.poster.integration;
 import com.hazelcast.web.SessionListener;
 import com.hazelcast.web.spring.SpringAwareWebFilter;
 import com.mangofactory.swagger.plugin.EnableSwagger;
-import org.pti.poster.integration.security.WebSecurityConfiguration;
 import org.pti.poster.rest.RestSpringConfig;
 import org.pti.poster.service.SpringServiceApplicationConfiguration;
 import org.springframework.boot.SpringApplication;
@@ -12,21 +11,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.ServletListenerRegistrationBean;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.session.SessionRegistry;
 
 import javax.servlet.DispatcherType;
 
 @SpringBootApplication
-@EnableWebSecurity
 @EnableSwagger
 @Configuration
+@ConfigurationProperties
 @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)
-@Import(value = {SpringServiceApplicationConfiguration.class, WebSecurityConfiguration.class, RestSpringConfig.class})
+@Import(value = {SpringServiceApplicationConfiguration.class, RestSpringConfig.class})
 public class Application extends WebMvcAutoConfiguration {
 
     public static void main(String[] args) {

@@ -5,9 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-@Configuration
-@EnableAutoConfiguration
-@Component
+//todo
+//@Configuration
+//@EnableAutoConfiguration
+//@Component
 public class SpringWebMvcInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
